@@ -1,10 +1,42 @@
 #include "location.h"
 #include "renderable.h"
 
-class Animal : public Renderable, public Location{
+
+class AnimalDiet {
+	public:
+		//ctor
+		AnimalDiet();
+		AnimalDiet(int weight,bool eatingMeat, bool eatingPlant);
+		
+		//getter
+		bool isCarnivore();
+		bool isHerbivore();
+		bool isOmnivore();
+	
+	protected:
+		int weight;
+		bool meatDiet;
+		bool plantDiet;
+};
+
+class AnimalTameStatus {
+	public:
+		//ctor
+		AnimalTameStatus();
+		AnimalTameStatus(bool tameStatus);
+		
+		//getter
+		bool isTame();
+		
+	protected:
+		bool tame;
+};
+
+class Animal : public Renderable, public Location, public AnimalDiet,public AnimalTameStatus{
 	public :
 		virtual void Interact () = 0;
 };
+
 
 class AnimalHabitat {
 	public:
@@ -36,7 +68,7 @@ class AnimalClassification {
 		//getter
 		char* GetFamily();
 		char* GetGenus();
-		char* getSpecies();
+		char* GetSpecies();
 		char* GetScientificName();
 	
 	protected:
@@ -45,28 +77,28 @@ class AnimalClassification {
 		const char *species;
 };
 
-public LandAnimal : public Animal, public AnimalHabitat {
+class LandAnimal : public Animal, public AnimalHabitat {
 	public:
 		//ctor
-		LandAnimal():AnimalHabitat(true,false,false);
+		LandAnimal():AnimalHabitat(true,false,false){};
 };
 
-public WaterAnimal : public Animal, public AnimalHabitat {
+class WaterAnimal : public Animal, public AnimalHabitat {
 	public:
 		//ctor
-		WaterAnimal():AnimalHabitat(false,true,true);
+		WaterAnimal():AnimalHabitat(false,true,true){};
 };
 
-public FlyingAnimal : public Animal, public AnimalHabitat {
+class FlyingAnimal : public Animal, public AnimalHabitat {
 	public:
 		//ctor
-		FlyingAnimal():AnimalHabitat(false,false,true);
+		FlyingAnimal():AnimalHabitat(false,false,true){};
 };
 
-public Amphibian : public Animal, public AnimalHabitat {
+class Amphibian : public Animal, public AnimalHabitat {
 	public:
 		//ctor
-		Amphibian():AnimalHabitat(true,true,false);
+		Amphibian():AnimalHabitat(true,true,false){};
 };
 
 //animal class list
@@ -76,7 +108,7 @@ class Cat : public LandAnimal,public AnimalClassification {
 	//Felis catus
 	public:
 		//ctor
-		Cat():AnimalClassification("Felidae","Felis","catus");
+		Cat():AnimalClassification("Felidae","Felis","catus"){};
 	
 };
 
