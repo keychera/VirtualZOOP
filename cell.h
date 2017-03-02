@@ -1,27 +1,17 @@
-class Zoo {
-    public:
-        Zoo();
-        Zoo(int w, int l);
-        Zoo(const Zoo& z);
-        ~Zoo();
-        Zoo& operator= (const Zoo& Z);
-    protected:
-        Cell** Cells;
-        const int width;
-        const int length;
-};
+#include "animal.h"
 
 class Cell: public Renderable{
     public:
-        virtual render();
+        virtual void render();
         void getLoc();
     private:
         Location Loc;
 };
 class Habitat: public Cell{
     public:
-        virtual render();
+        virtual void render();
 };
+
 class LandHabitat: public Habitat{
     public:
         LandHabitat();
@@ -73,10 +63,10 @@ class Exit: public Road{
         Exit();
         Exit(const Exit& E);
         ~Exit();
-        Exit& operator=(const Exit& E)
+        Exit& operator=(const Exit& E);
 };
 
-class Restaurant: public Faciliy{
+class Restaurant: public Facility{
     public:
         void render();
         char* getName();
@@ -95,14 +85,14 @@ class Park: public Facility{
 class Cage: public Renderable, public Location{
     public:
         Cage();
-        Cage(Habitat H, int size);
+        Cage(Habitat *H, int size);
         ~Cage();
         Cage& operator=(const Cage& C);
         char* getHabitat();
         int getsize();
         Location* getArea();
         void MovementManager();
-        void AddAnimal(Animal A);
+        void AddAnimal(Animal& A);
         Animal* getAnimals;
         int getNAnimal;
     private:
