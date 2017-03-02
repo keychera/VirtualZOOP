@@ -21,10 +21,6 @@ class Cell: public Renderable{
 class Habitat: public Cell{
     public:
         virtual render();
-        void AddAnimal(Animal A);
-    protected:
-        Animal* Animals;
-        int NAnimal;
 };
 class LandHabitat: public Habitat{
     public:
@@ -105,7 +101,13 @@ class Cage: public Renderable, public Location{
         char* getHabitat();
         int getsize();
         Location* getArea();
+        void MovementManager();
+        void AddAnimal(Animal A);
+        Animal* getAnimals;
+        int getNAnimal;
     private:
+        Animal* Animals;
+        int NAnimal;
         char* habitat
         const int size;
         Location* area;
