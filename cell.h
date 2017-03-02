@@ -108,7 +108,7 @@ class Cage: public Renderable, public Location{
     private:
         Animal* Animals;
         int NAnimal;
-        char* habitat
+        char* habitat;
         const int size;
         Location* area;
 };
