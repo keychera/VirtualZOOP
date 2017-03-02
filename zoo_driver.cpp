@@ -1,5 +1,4 @@
-
-#include "animal_test.h"
+#include "animal.h"
 
 int main() {
 	
