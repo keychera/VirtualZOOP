@@ -32,15 +32,10 @@ class AnimalTameStatus {
 		bool tame;
 };
 
-class Animal : public Renderable, public Location, public AnimalDiet,public AnimalTameStatus{
-	public :
-		virtual void Interact () = 0;
-};
-
-
 class AnimalHabitat {
 	public:
 		//ctor
+		AnimalHabitat();
 		AnimalHabitat(bool land,bool water,bool flying);
 		
 		//getter
@@ -57,10 +52,11 @@ class AnimalHabitat {
 class AnimalClassification {
 	public:
 		//ctor
+		AnimalClassification();
 		AnimalClassification(const char *_family,const char *_genus,const char *_species);
 		
 		//cctor
-		AnimalClassification(AnimalClassification&); 
+		AnimalClassification(const AnimalClassification&); 
 		
 		//dtor
 		~AnimalClassification();
@@ -77,25 +73,31 @@ class AnimalClassification {
 		const char *species;
 };
 
-class LandAnimal : public Animal, public AnimalHabitat {
+class Animal : public virtual Renderable, public virtual Location, public virtual AnimalDiet, public virtual AnimalTameStatus,public virtual AnimalClassification{
+	public :
+		Animal();
+		virtual void Interact () = 0;
+};
+
+class LandAnimal : public virtual Animal, public AnimalHabitat {
 	public:
 		//ctor
 		LandAnimal():AnimalHabitat(true,false,false){};
 };
 
-class WaterAnimal : public Animal, public AnimalHabitat {
+class WaterAnimal : public virtual Animal, public AnimalHabitat {
 	public:
 		//ctor
 		WaterAnimal():AnimalHabitat(false,true,true){};
 };
 
-class FlyingAnimal : public Animal, public AnimalHabitat {
+class FlyingAnimal : public virtual Animal, public AnimalHabitat {
 	public:
 		//ctor
 		FlyingAnimal():AnimalHabitat(false,false,true){};
 };
 
-class Amphibian : public Animal, public AnimalHabitat {
+class Amphibian : public virtual Animal, public AnimalHabitat {
 	public:
 		//ctor
 		Amphibian():AnimalHabitat(true,true,false){};
@@ -103,139 +105,140 @@ class Amphibian : public Animal, public AnimalHabitat {
 
 //animal class list
 
-class Cat : public LandAnimal,public AnimalClassification {
+class Cat : public virtual LandAnimal {
 	//family Felidae
 	//Felis catus
 	public:
 		//ctor
-		Cat():AnimalClassification("Felidae","Felis","catus"){};
+		Cat():AnimalDiet(10,true,false),AnimalTameStatus(true),AnimalClassification("Felidae","Felis","catus"){};
+		Cat(int weight):AnimalDiet(weight,true,false),AnimalTameStatus(true),AnimalClassification("Felidae","Felis","catus"){};
 	
 };
 
-class Cheetah : public LandAnimal,public AnimalClassification {
+class Cheetah : public LandAnimal {
 	//family Felidae
 	//Acinonyx jubatus
 	
 };
 
-class Lion : public LandAnimal,public AnimalClassification {
+class Lion : public LandAnimal {
 	//family Felidae
 	//Panthera leo
 	
 };
 
-class Leopard : public LandAnimal,public AnimalClassification {
+class Leopard : public LandAnimal {
 	//family Felidae
 	//Panthera pardus
 	
 };
 
-class Tiger : public LandAnimal,public AnimalClassification {
+class Tiger : public LandAnimal {
 	//family Felidae
 	//Panthera tigris
 };
 
-class Beluga : public WaterAnimal,public AnimalClassification {
+class Beluga : public WaterAnimal {
 	//family Monodontidae
 	//Delphinapterus leucas
 	
 };
 
-class Narwhal : public WaterAnimal,public AnimalClassification {
+class Narwhal : public WaterAnimal {
 	//family Monodontidae
 	//Monodon monoceros
 	
 };
 
-class Dolphin : public WaterAnimal,public AnimalClassification {
+class Dolphin : public WaterAnimal {
 	//family Delphinidae
 	//Delphinus delphis
 };
 
-class Orca : public WaterAnimal,public AnimalClassification {
+class Orca : public WaterAnimal {
 	//family Delphinidae
 	//Orcinus orca
 	
 };
 
-class Clownfish : public WaterAnimal,public AnimalClassification {
+class Clownfish : public WaterAnimal {
 	//family Pomacentridae
 	//Ocellaris clownfish
 	
 };
 
-class Damselfish : public WaterAnimal,public AnimalClassification {
+class Damselfish : public WaterAnimal {
 	//family Pomacentridae
 	//Stegastes variabilis
 
 };
 
-class Coyote : public LandAnimal,public AnimalClassification {
+class Coyote : public LandAnimal {
 	//family Canidae
 	//Canis latrans
 	
 };
 
-class Wolf : public LandAnimal,public AnimalClassification {
+class Wolf : public LandAnimal {
 	//family Canidae
 	//Canis Lupus
 };
 
-class RedFox : public LandAnimal,public AnimalClassification {
+class RedFox : public LandAnimal {
 	//family Canidae
 	//Vulpes vulpes
 };
 
-class ArcticFox : public LandAnimal,public AnimalClassification {
+class ArcticFox : public LandAnimal {
 	//family Canidae
 	//Vulpes lagopus
 };
 
-class Komodo : public LandAnimal,public AnimalClassification {
+class Komodo : public LandAnimal {
 	//family Varanidae
 	//Varanus komodoensis
 	
 };
 
-class Biawak  : public LandAnimal,public AnimalClassification {
+class Biawak : public LandAnimal {
 	//family Varanidae
 	//Varanus cerambonensis
 	
 };
 
-class BadakJawa : public LandAnimal,public AnimalClassification {
+class BadakJawa : public LandAnimal {
 	//family Rhinocerotidae
 	//Rhinoceros sondaicus
 	
 };
 
-class BadakSumatra : public LandAnimal,public AnimalClassification {
+class BadakSumatra : public LandAnimal {
 	//family Rhinocerotidae
 	//Dicerorhinus sumatrensis
 	
 };
 
-class BaldEagle : public FlyingAnimal, public AnimalClassification {
+class BaldEagle : public FlyingAnimal {
 	//family Accipitridae
 	//Haliaeetus leucocephalus
 };
 
-class GoldenEagle : public FlyingAnimal, public AnimalClassification {
+class GoldenEagle : public FlyingAnimal {
 	//family Accipitridae
 	//Aquila chrysaetos
 };
 
-class RedKite : public FlyingAnimal, public AnimalClassification {
+class RedKite : public FlyingAnimal {
 	//family Accipitridae
 	//Milvus milvus
 };
 
-class BlackKite : public FlyingAnimal, public AnimalClassification {
+class BlackKite : public FlyingAnimal {
 	//family Accipitridae
 	//Milvus migrans
 };
 
-class Axolotl : public Amphibian,public AnimalClassification {
+class Axolotl : public Amphibian {
 	//family Ambystomatidae
 	//Ambystoma mexicanum
 };
