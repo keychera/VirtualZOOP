@@ -1,9 +1,7 @@
-class Renderable {
-	public :
-		virtual void Render () = 0;
-};
+#include "location.h"
+#include "renderable.h"
 
-class Animal : public Renderable {
+class Animal : public Renderable, public Location{
 	public :
 		virtual void Interact () = 0;
 };
