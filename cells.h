@@ -1,4 +1,4 @@
-class Zoo : {
+class Zoo {
     public:
         Zoo();
         Zoo(int w, int l);
@@ -9,7 +9,7 @@ class Zoo : {
         Cell** Cells;
         const int width;
         const int length;
-}
+};
 
 class Cell: public Renderable{
     public:
@@ -17,7 +17,7 @@ class Cell: public Renderable{
         void getLoc();
     private:
         Location Loc;
-}
+};
 class Habitat: public Cell{
     public:
         virtual render();
@@ -25,7 +25,7 @@ class Habitat: public Cell{
     protected:
         Animal* Animals;
         int NAnimal;
-}
+};
 class LandHabitat: public Habitat{
     public:
         LandHabitat();
@@ -33,7 +33,7 @@ class LandHabitat: public Habitat{
         ~LandHabitat();
         LandHabitat& operator=(const LandHabitat& L);
         void render();
-}
+};
 
 class WaterHabitat: public Habitat{
     public:
@@ -42,7 +42,7 @@ class WaterHabitat: public Habitat{
         ~WaterHabitat();
         WaterHabitat& operator= (const WaterHabitat& W);
         void render();
-}
+};
 
 class AirHabitat: public Habitat{
     public:
@@ -51,12 +51,12 @@ class AirHabitat: public Habitat{
         ~AirHabitat();
         AirHabitat& operator= (const WaterHabitat& A);
         void render();
-}
+};
 
 class Facility:public Cell{
     public:
         virtual char* getName();
-}
+};
 
 class Road: public Facility{
     public:
@@ -64,21 +64,21 @@ class Road: public Facility{
         Road(const Road& R);
         ~Road();
         Road& operator=(const Road& R);            
-}
+};
 class Entrance: public Road{
     public:
         Entrance();
         Entrance(const Entrance& E);
         ~Entrance();
         Entrance& operator=(const Entrance& E);
-}
+};
 class Exit: public Road{
     public:
         Exit();
         Exit(const Exit& E);
         ~Exit();
         Exit& operator=(const Exit& E)
-}
+};
 
 class Restaurant: public Faciliy{
     public:
@@ -86,7 +86,7 @@ class Restaurant: public Faciliy{
         char* getName();
     private:
         char* Name;
-}
+};
 
 class Park: public Facility{
     public:
@@ -94,7 +94,7 @@ class Park: public Facility{
         char* getName();
     private:
         char* parkname;
-}
+};
 
 class Cage: public Renderable, public Location{
     public:
@@ -109,4 +109,4 @@ class Cage: public Renderable, public Location{
         char* habitat
         const int size;
         Location* area;
-}
+};
