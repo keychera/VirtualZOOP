@@ -12,7 +12,7 @@
 using namespace  std;
 
 /**
- * @class Cage
+ * @class Cage<T>
  * @brief uhhmm edit this later
  */
 template <class T>

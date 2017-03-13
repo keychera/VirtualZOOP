@@ -12,8 +12,6 @@ bool AnimalDiet::IsCarnivore()	{ return meatDiet;}
 bool AnimalDiet::IsHerbivore()	{ return plantDiet;}
 bool AnimalDiet::IsOmnivore()	{ return meatDiet && plantDiet;}
 
-int AnimalDiet::GetWeight()		{ return weight;}
-
 
 //AnimalTameStatus
 
