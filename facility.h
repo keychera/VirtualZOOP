@@ -13,7 +13,11 @@ class Road: public Facility{
         //Road(const Road& R);
         //~Road();
         //Road& operator=(const Road& R);     
-        virtual void render();    
+        virtual void render();
+        char* getName();
+        void setName(char* _name);   
+    protected:
+        char* name;
 };
 
 class Entrance: public Road{
@@ -22,10 +26,7 @@ class Entrance: public Road{
         //Entrance(const Entrance& E);
         //~Entrance();
         //Entrance& operator=(const Entrance& E);
-        virtual void render();
-        int getEntranceNumber();
-    private:
-        int EntranceNumber;
+        void render();
 };
 
 class Exit: public Road{
@@ -35,9 +36,6 @@ class Exit: public Road{
         //~Exit();
         //Exit& operator=(const Exit& E);
         void render();
-        int getExitNumber();
-    private:
-        int ExitNumber;
 };
 
 class Restaurant: public Facility{
@@ -58,4 +56,46 @@ class Park: public Facility{
         void setName(char* name);
     private:
         char* parkname;
+};
+class Habitat: public Cell{
+    public:
+        Habitat();
+        virtual void render()=0;
+        virtual const char* gethabitat()=0;
+};
+
+class LandHabitat: public Habitat{
+    public:
+        LandHabitat();
+        //LandHabitat(const LandHabitat& L);
+        //~LandHabitat();
+        //LandHabitat& operator=(const LandHabitat& L);
+        void render();
+        const char* gethabitat();
+    private:
+        const char* habitat="LandHabitat";
+};
+
+class WaterHabitat: public Habitat{
+    public:
+        WaterHabitat();/*
+        WaterHabitat(const WaterHabitat& W);
+        ~WaterHabitat();
+        WaterHabitat& operator= (const WaterHabitat& W);*/
+        void render();
+        const char* gethabitat();
+    private:
+        const char* habitat="WaterHabitat";
+};
+
+class AirHabitat: public Habitat{
+    public:
+        AirHabitat();
+        //AirHabitat(const AirHabitat& A);
+        //~AirHabitat();
+        //AirHabitat& operator= (const WaterHabitat& A);
+        void render();
+        const char* gethabitat();
+    private:
+        const char* habitat="AirHabitat";
 };
