@@ -58,6 +58,7 @@ class LandHabitat: public Habitat{
         
     private:
         const char* habitat="LandHabitat"; ///< the literal "LandHabitat"
+};
 
 /**
  * @class WaterHabitat

@@ -20,9 +20,10 @@ class Location {
 		Location();
 		/**
 		 * @brief constructor with parameter
+		 * this will set x and y to the given parameters
 		 * @param x
 		 * @param y
-		 * this will set x and y to the given parameters
+		 * 
 		 */
 		Location(int,int);
 
