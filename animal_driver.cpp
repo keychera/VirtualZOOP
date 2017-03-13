@@ -1,6 +1,5 @@
 //animaldriver.cpp
 
-#include "animal.h"
 #include "animal_list.h"
 #include <iostream>
 using namespace std;
@@ -9,7 +8,12 @@ void Identify(Animal& a);
 
 int main (int argc, char *argv[]){
 	Cat neko;
+	Clownfish nemo;
+	Clownfish fatNemo(99);
+	
 	Identify(neko);
+	Identify(nemo);
+	Identify(fatNemo);
 	
 	return 0;
 }
