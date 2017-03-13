@@ -1,12 +1,12 @@
 class Location {
 	public :
 		Location();
-		Location(const int, const int);
+		Location(int,int);
 
-		Location getX();
-		Location getY();
-		Location setX();
-		Location setY();
+		int getX();
+		int getY();
+		void setX(int);
+		void setY(int);
 	private :
 		int x;
 		int y;

@@ -9,9 +9,9 @@ class AnimalDiet {
 		AnimalDiet(int weight,bool eatingMeat, bool eatingPlant);
 		
 		//getter
-		bool isCarnivore();
-		bool isHerbivore();
-		bool isOmnivore();
+		bool IsCarnivore();
+		bool IsHerbivore();
+		bool IsOmnivore();
 	
 	protected:
 		int weight;
@@ -26,7 +26,7 @@ class AnimalTameStatus {
 		AnimalTameStatus(bool tameStatus);
 		
 		//getter
-		bool isTame();
+		bool IsTame();
 		
 	protected:
 		bool tame;
@@ -37,16 +37,15 @@ class AnimalHabitat {
 		//ctor
 		AnimalHabitat();
 		AnimalHabitat(bool land,bool water,bool flying);
-		
 		//getter
-		bool isLand();
-		bool isWater();
-		bool isFlying();
+		bool IsLand();
+		bool IsWater();
+		bool IsFlying();
 		
 	protected:
-		bool Land;
-		bool Water;
-		bool Flying;
+		bool land;
+		bool water;
+		bool flying;
 };
 
 class AnimalClassification {
@@ -56,16 +55,15 @@ class AnimalClassification {
 		AnimalClassification(const char *_family,const char *_genus,const char *_species);
 		
 		//cctor
-		AnimalClassification(const AnimalClassification&); 
+		//AnimalClassification(const AnimalClassification&); 
 		
 		//dtor
-		~AnimalClassification();
+		//~AnimalClassification();
 	
 		//getter
-		char* GetFamily();
-		char* GetGenus();
-		char* GetSpecies();
-		char* GetScientificName();
+		const char* GetFamily();
+		const char* GetGenus();
+		const char* GetSpecies();
 	
 	protected:
 		const char *family;
@@ -73,48 +71,25 @@ class AnimalClassification {
 		const char *species;
 };
 
-class Animal : public virtual Renderable, public virtual Location, public virtual AnimalDiet, public virtual AnimalTameStatus,public virtual AnimalClassification{
+class Animal : public virtual Renderable, public virtual Location, public virtual AnimalDiet, public virtual AnimalTameStatus,public virtual AnimalClassification, public virtual AnimalHabitat{
 	public :
 		Animal();
-		virtual void Interact () = 0;
-};
-
-class LandAnimal : public virtual Animal, public AnimalHabitat {
-	public:
-		//ctor
-		LandAnimal():AnimalHabitat(true,false,false){};
-};
-
-class WaterAnimal : public virtual Animal, public AnimalHabitat {
-	public:
-		//ctor
-		WaterAnimal():AnimalHabitat(false,true,true){};
-};
-
-class FlyingAnimal : public virtual Animal, public AnimalHabitat {
-	public:
-		//ctor
-		FlyingAnimal():AnimalHabitat(false,false,true){};
-};
-
-class Amphibian : public virtual Animal, public AnimalHabitat {
-	public:
-		//ctor
-		Amphibian():AnimalHabitat(true,true,false){};
+		virtual const char* Interact () = 0;
 };
 
 //animal class list
 
-class Cat : public virtual LandAnimal {
+class Cat : public virtual Animal {
 	//family Felidae
 	//Felis catus
 	public:
 		//ctor
-		Cat():AnimalDiet(10,true,false),AnimalTameStatus(true),AnimalClassification("Felidae","Felis","catus"){};
-		Cat(int weight):AnimalDiet(weight,true,false),AnimalTameStatus(true),AnimalClassification("Felidae","Felis","catus"){};
-	
+		Cat();
+		Cat(int weight);
+		const char* Interact ();
+		void Render ();
 };
-
+/*
 class Cheetah : public LandAnimal {
 	//family Felidae
 	//Acinonyx jubatus
@@ -242,3 +217,4 @@ class Axolotl : public Amphibian {
 	//family Ambystomatidae
 	//Ambystoma mexicanum
 };
+*/
