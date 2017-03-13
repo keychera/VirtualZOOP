@@ -1,3 +1,6 @@
+#ifndef HABITAT_H
+#define HABITAT_H
+
 /**
  * @file	habitat.h
  * @author	Harum Lokawati
@@ -122,3 +125,5 @@ class AirHabitat: public Habitat{
     private:
         const char* habitat="AirHabitat"; ///< the literal "AirHabitat"
 };
+
+#endif

@@ -1,3 +1,6 @@
+#ifndef FACILITY_H
+#define FACILITY_H
+
 #include "cell.h"
 class Facility:public Cell{
     public:
@@ -99,3 +102,5 @@ class AirHabitat: public Habitat{
     private:
         const char* habitat="AirHabitat";
 };
+
+#endif

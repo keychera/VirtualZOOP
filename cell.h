@@ -1,3 +1,6 @@
+#ifndef CELL_H
+#define CELL_H
+
 /**
  * @file	cell.h
  * @author	Harum Lokawati
@@ -30,3 +33,5 @@ class Cell: public Renderable, public Location{
 		 */
         Cell(int x, int y);
 };
+
+#endif

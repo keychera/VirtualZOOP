@@ -1,3 +1,6 @@
+#ifndef CAGE_H
+#define CAGE_H
+
 /**
  * @file	cage.h
  * @author	Harum Lokawati
@@ -38,3 +41,5 @@ class Cage:public Animal{
         const int size;
         Location* area;
 };
+
+#endif

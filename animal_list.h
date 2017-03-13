@@ -1,4 +1,5 @@
-//animal class list
+#ifndef ANIMALLIST_H
+#define ANIMALLIST_H
 
 #include "animal.h"
 
@@ -245,4 +246,4 @@ class Axolotl : public virtual Animal {
 		void Render ();
 };
 
-
+#endif

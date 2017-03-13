@@ -1,3 +1,6 @@
+#ifndef ANIMAL_H
+#define ANIMAL_H
+
 /**
  * @file	location.h
  * @author	Kevin Erdiza
@@ -187,3 +190,5 @@ class Animal : public virtual Renderable, public virtual Location, public virtua
 		 */
 		virtual const char* Interact () = 0;
 };
+
+#endif

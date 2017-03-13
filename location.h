@@ -1,3 +1,6 @@
+#ifndef LOCATION_H
+#define LOCATION_H
+
 /**
  * @file	location.h
  * @author	Kevin Erdiza
@@ -53,3 +56,5 @@ class Location {
 		int x;	///< the x integer value of the location
 		int y;	///< the y integer value of the location
 };
+
+#endif

@@ -1,6 +1,13 @@
+#ifndef ZOO_H
+#define ZOO_H
+
 #include "cage.h"
+#include "cell.h"
+#include "facility.h"
+
 #include <stdio.h>
 #define DEFSIZE 10
+
 class Zoo {
     public:
         Zoo();
@@ -143,3 +150,5 @@ Cell** Zoo::getCells()
 {
     return Cells;
 }
+
+#endif
