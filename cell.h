@@ -4,7 +4,7 @@ class Cell: public Renderable{
     public:
         virtual void render();
         void getLoc();
-    private:
+    protected:
         Location Loc;
 };
 class Habitat: public Cell{

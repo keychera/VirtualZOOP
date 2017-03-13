@@ -6,7 +6,7 @@
 //AnimalDiet
 
 AnimalDiet::AnimalDiet():weight(1),meatDiet(false),plantDiet(false){}
-AnimalDiet::AnimalDiet(int w,bool m,bool p):weight(w),meatDiet(m),plantDiet(p){}
+AnimalDiet::AnimalDiet(int _weight,bool _meat,bool _plant):weight(_weight),meatDiet(_meat),plantDiet(_plant){}
 
 bool AnimalDiet::IsCarnivore()	{ return meatDiet;}
 bool AnimalDiet::IsHerbivore()	{ return plantDiet;}
@@ -16,7 +16,7 @@ bool AnimalDiet::IsOmnivore()	{ return meatDiet && plantDiet;}
 //AnimalTameStatus
 
 AnimalTameStatus::AnimalTameStatus():tame(true){}
-AnimalTameStatus::AnimalTameStatus(bool t):tame(t){}
+AnimalTameStatus::AnimalTameStatus(bool _tame):tame(_tame){}
 
 bool AnimalTameStatus::IsTame()	{return tame;}
 
@@ -24,7 +24,7 @@ bool AnimalTameStatus::IsTame()	{return tame;}
 //AnimalHabitat
 
 AnimalHabitat::AnimalHabitat():land(false),water(false),flying(false){}
-AnimalHabitat::AnimalHabitat(bool l,bool w,bool f):land(l),water(w),flying(f){}
+AnimalHabitat::AnimalHabitat(bool _land,bool _water,bool _flying):land(_land),water(_water),flying(_flying){}
 
 
 bool AnimalHabitat::IsLand()	{return land;}
@@ -35,7 +35,7 @@ bool AnimalHabitat::IsFlying()	{return flying;}
 //AnimalClassification
 
 AnimalClassification::AnimalClassification():family(""),genus(""),species(""){}
-AnimalClassification::AnimalClassification(const char *f,const char *g,const char *s):family(f),genus(g),species(s){}
+AnimalClassification::AnimalClassification(const char *family,const char *genus,const char *species):family(family),genus(genus),species(species){}
 
 	//ctor here ?
 
@@ -47,18 +47,6 @@ const char* AnimalClassification::GetSpecies()	{return species;}
 
 Animal::Animal(){};
 
-//Land,Water,Flying,Amphibian animal is already simply defined in the header
+//Land,Water,Flying,Amphibian animal is deleted
 
 //Animal Realization classes
-	
-//Cat
-	Cat::Cat():AnimalDiet(10,true,false),AnimalTameStatus(true),AnimalClassification("Felidae","Felis","catus"),AnimalHabitat(1,0,0){}
-	Cat::Cat(int w):AnimalDiet(w,true,false),AnimalTameStatus(true),AnimalClassification("Felidae","Felis","catus"),AnimalHabitat(1,0,0){}
-
-	const char* Cat::Interact (){
-		return "NYAA";
-	}
-		
-	void Cat::Render (){
-		
-	}
