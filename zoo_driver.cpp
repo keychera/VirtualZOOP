@@ -26,11 +26,11 @@ int main() {
         {
             cout<<Z.getCages()[i]->getArea()[j].getX()<<' '<<Z.getCages()[i]->getArea()[j].getY()<<endl;
         }
-    }
+    }/*
     Cat C;
     Z.getCages()[1]->AddAnimal(&C);
     cout<<Z.getCages()[1]->getAnimals()[Z.getCages()[1]->getNAnimal()]->getX()<<endl;
-    cout<<Z.getCages()[1]->getAnimals()[Z.getCages()[1]->getNAnimal()]->getY()<<endl;
+    cout<<Z.getCages()[1]->getAnimals()[Z.getCages()[1]->getNAnimal()]->getY()<<endl;*/
     cout<<"done";
 return 0;
 }

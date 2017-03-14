@@ -26,7 +26,12 @@ Zoo::Zoo(const Zoo& z):width(z.width),length(z.length)
 Zoo::~Zoo()
 {  
     delete[] Cells;
-    delete[] Cages;
+    //cout<<"dtor";
+    for(int i=1;i<NCages;i++)
+    {
+        delete Cages[i];
+    }
+    //cout<<"dtor";
 }
 Zoo& Zoo::operator= (const Zoo& Z)
 {
@@ -51,9 +56,11 @@ void Zoo::ReadZoo(const char* filename)
     fseek (f , 0 , SEEK_END);
     int lSize = ftell (f);
     rewind (f);
-
+    cout<<lSize<<endl;
   // allocate memory to contain the whole file:
-   map = (char*) malloc (sizeof(char)*lSize);
+    delete[] Cells;
+    Cells=new Cell*[lSize];
+   map = new char[lSize];
     int i=0;
     int j=0;
     int w=0;
@@ -69,52 +76,46 @@ void Zoo::ReadZoo(const char* filename)
                 w=j;
             }
         }else{
-            map[j]=ch;
+            if(ch=='a')
+            {
+                Cells[j]=new AirHabitat;   
+            }else if (ch=='w')
+            {
+                Cells[j]=new WaterHabitat;
+            }else if(ch=='l')
+            {
+                Cells[j]=new LandHabitat;
+            }else if(ch=='R')
+            {
+                Cells[j]=new Restaurant;
+            }else if(ch=='P')
+            {
+                Cells[j]=new Park;
+            }else if(ch=='E')
+            {
+                Cells[j]=new Entrance;
+            }else if(ch=='@')
+            {
+                Cells[j]=new Exit;
+            }else{
+                Cells[j]=new Road;
+            }
+            cout<<j<<Cells[j]->gettype()<<endl;
             j++;
         }
     }
+    cout<<"done";
     fclose(f);
     length=w;
     width=i;
-    for(i=0;i<width;i++)
+    cout<<width;
+    cout<<length;
+    for(int i=0;i<(j);i++)
     {
-        for(int j=0;j<length;j++)
-        {
-            int indeks=i*(length)+j;
-            if(map[indeks]=='O')
-            {
-                cout<<map[indeks];
-                Cells[indeks]=new AirHabitat;
-            }else if(map[indeks]=='#')
-            {
-                Cells[indeks]=new WaterHabitat;
-            }else if(map[indeks]=='X')
-            {
-                Cells[indeks]=new LandHabitat;
-            }else if(map[indeks]=='R')
-            {
-                Cells[indeks]=new Restaurant;
-            }else if(map[indeks]=='E')
-            {
-                Cells[indeks]=new Entrance;
-            }else if(map[indeks]=='P')
-            {
-                Cells[indeks]=new Park;
-            }else if(map[indeks]=='@')
-            {
-                Cells[indeks]=new Exit;
-            }else
-            {
-                Cells[indeks]=new Road;
-            }
-            cout<<indeks<<map[indeks];
-            Cells[indeks]->Render();
-            cout<<Cells[indeks]->gettype()<<endl;
-            Cells[indeks]->setX(j);
-            Cells[indeks]->setY(i);
-        }
+        Cells[i]->setX(i%length);
+        Cells[i]->setY(i/length);
     }
-    free(map);
+    cout<<"done";
 }
 int Zoo::getwidth()
 {
@@ -156,7 +157,7 @@ void Zoo::MakeCage()
             int checked=0;
             char* name;
             name=Cells[count]->gettype();
-            cout<<name<<endl;
+            //cout<<name<<endl;
             queue[i]=count;
             check[queue[i]]=true;
             while((checked<=i)&&(checked<(width*length)))
@@ -177,7 +178,6 @@ void Zoo::MakeCage()
                 {
                     //if(strcmp(Cells[queue[checked]-1]->getname(),"habitat")==0)
                     //{
-                        cout<<queue[checked]-1;
                         if(strcmp(Cells[queue[checked]-1]->gettype(),name)==0)
                         {
                             i++;
