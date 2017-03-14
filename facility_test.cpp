@@ -7,11 +7,15 @@ class FacilityTest : public ::testing::Test {
 };
 
 TEST(FacilityTest, GetTextMethod) {
-  AirHabitat A;
-  WaterHabitat W;
-  LandHabitat L;
-  ASSERT_EQ("habitat",L.getName());
-  ASSERT_EQ("LandHabitat",L.getType());
-  ASSERT_EQ("WaterHabitat",W.getType());
-  ASSERT_EQ("AirHabitat",A.getType());
+  Road R;
+  Exit Ex;
+  Entrance En;
+  Restaurant Res;
+  Park P;
+  ASSERT_EQ("facility", R.getName());
+  ASSERT_EQ("Road",R.getType());
+  ASSERT_EQ("Exit",Ex.getType());
+  ASSERT_EQ("Entrance",En.getType());
+  ASSERT_EQ("Restaurant",Res.getType());
+  ASSERT_EQ("Park",P.getType());
 }
