@@ -1,5 +1,5 @@
-main: zoo_driver.o animal.o animal_list.o cage.o cell.o facility.o habitat.o location.o zoo.o
-	g++ zoo_driver.o animal.o animal_list.o cage.o cell.o facility.o habitat.o location.o zoo.o renderable.h -o main -std=c++11
+main: zoo_driver.o animal.o animal_list.o cage.o cell.o facility.o habitat.o location.o zoo.o tour.o
+	g++ zoo_driver.o animal.o animal_list.o cage.o cell.o facility.o habitat.o location.o zoo.o tour.o renderable.h path_struct.h -o main -std=c++11
 
 zoo_driver.o: zoo_driver.cpp
 	g++ -c zoo_driver.cpp -o zoo_driver.o
@@ -27,6 +27,9 @@ location.o : location.cpp
 
 zoo.o : zoo.cpp
 	g++ -c zoo.cpp -o zoo.o
+
+tour.o : tour.cpp
+	g++ -c tour.cpp -o tour.o
 
 clean:
 	rm -f *.o main

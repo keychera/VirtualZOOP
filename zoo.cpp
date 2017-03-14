@@ -1,5 +1,6 @@
 #include "zoo.h"
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 #include <cstdlib>
 Zoo::Zoo():width(DEFSIZE),length(DEFSIZE)
@@ -117,8 +118,8 @@ void Zoo::ReadZoo(const char* filename)
     cout<<length;
     for(int i=0;i<(j);i++)
     {
-        Cells[i]->SetX(i/length);
-        Cells[i]->SetY(i%length);
+        Cells[i]->SetX(i%length);
+        Cells[i]->SetY(i/length);
     }
     cout<<"done";
 }
@@ -255,8 +256,14 @@ void Zoo::MakeCage()
 
 Cell* Zoo::AccessCell(int x,int y){
   int i = 0;
-  while ((i < width*length) && (Cells[i]->GetX() == x) && (Cells[i]->GetY() == y))
-    i++;
+  bool found = false;
+  while ((i < width*length) && !found) {
+    if ((Cells[i]->GetX() == x) && (Cells[i]->GetY() == y)) {
+      found = true;
+    }else{
+      i++;
+    }
+  }
   if (i != width*length)
     return Cells[i];
   else
