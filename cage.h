@@ -13,7 +13,7 @@
  */
 
 /**
- * @class	Location
+ * @class	Cage
  * @brief	class to define cage for a defined size of cells in a zoo
  */
 using namespace  std;
@@ -90,14 +90,26 @@ class Cage{
          * @return void 
 		 */
         void AddAnimal(Animal* A);
+        /**
+		 * @brief getter untul Animals
+         * @return Animal**
+		 */
         Animal** GetAnimals();
+        /**
+		 * @brief getter untul NAnimal
+         * @return int
+		 */
         int GetNAnimal();
+        /**
+		 * @brief getter untul habitat
+         * @return const char*
+		 */
         const char* GetHabitat();
     private:
-        Animal** Animals;
-        int NAnimal;
-        const char* habitat;
-        const int size;
-        Location* area;
+        Animal** Animals;       ///< array of Animal* in Cage
+        int NAnimal;            ///< number of Animal in Cage
+        const char* habitat;    ///< habitat of the Cage
+        const int size;         ///< size of Cage
+        Location* area;         ///< array of Location of Cage
 };
 #endif
