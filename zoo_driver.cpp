@@ -5,21 +5,10 @@ using namespace std;
 int main() {
     string filename="map.txt";
 	Zoo Z;
-    cout<<"done"<<endl;
     Z.ReadZoo(filename.c_str());
-    cout<<"done"<<endl;
-    cout<<Z.GetWidth()<<endl;
-    cout<<Z.GetLength()<<endl;
-    for(int i=0;i<Z.GetWidth();i++)
-    {
-        for(int j=0;j<Z.GetLength();j++)
-        {
-            //cout<<Z.GetCells()[i*Z.GetLength()+j]->GetX();
-            //cout<<Z.GetCells()[i*Z.GetLength()+j]->GetY();
-            Z.GetCells()[i*Z.GetLength()+j]->Render();
-        }
-        cout<<endl;
-    }
+    cout<<"width:"<<Z.GetWidth()<<endl;
+    cout<<"length:"<<Z.GetLength()<<endl;
+    
     Z.MakeCage();
     //cout<<Z.GetNCages()<<endl;
     /*
