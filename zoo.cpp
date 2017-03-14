@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <string.h>
 
+
 Zoo::Zoo():width(DEFSIZE),length(DEFSIZE)
 {
     Cells=new Cell*[width*length];
@@ -255,8 +256,14 @@ void Zoo::MakeCage()
 
 Cell* Zoo::AccessCell(int x,int y){
   int i = 0;
-  while ((i < width*length) && (Cells[i]->GetX() == x) && (Cells[i]->GetY() == y))
-    i++;
+  bool found = false;
+  while ((i < width*length) && !found) {
+    if ((Cells[i]->GetX() == x) && (Cells[i]->GetY() == y)) {
+      found = true;
+    }else{
+      i++;
+    }
+  }
   if (i != width*length)
     return Cells[i];
   else

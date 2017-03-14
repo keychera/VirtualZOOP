@@ -1,4 +1,5 @@
 #include "zoo.h"
+#include "tour.h"
 #include <iostream>
 using namespace std;
 int main() {
@@ -32,6 +33,15 @@ int main() {
     Z.getCages()[1]->AddAnimal(&C);
     cout<<Z.getCages()[1]->getAnimals()[Z.getCages()[1]->getNAnimal()]->GetX()<<endl;
     cout<<Z.getCages()[1]->getAnimals()[Z.getCages()[1]->getNAnimal()]->GetY()<<endl;*/
-    cout<<"done";
+    /*
+  cout << "Tour Begins" << endl;
+  
+  Tour t(Z);
+  t.PrintRoute();
+  
+  cout << "Tour Ends" << endl;
+  */
+  
+    cout<<"done" << endl;
 return 0;
 }
