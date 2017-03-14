@@ -4,6 +4,10 @@ using namespace std;
 #define QDEFSIZE 100
 
 //a circular queue
+/**
+ * @class	Queue
+ * @brief	class generic of queue
+ */
 template <class T>
 class Queue{
   public:

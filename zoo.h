@@ -18,12 +18,12 @@
  * @brief	class to make a zoo include its components
  */
 class Zoo {
-    public:
-        /**
-		 * @brief default construstor
-		 * this will set width and legth to DEFSIZE and make new Cells and Cages
-		 */
-        Zoo();
+  public:
+   /**
+    * @brief default construstor
+    * this will set width and legth to DEFSIZE and make new Cells and Cages
+    */
+    Zoo();
         /**
 		 * @brief construstor with parameter
 		 * this will set width to w, legth to l and make new Cells and Cages
