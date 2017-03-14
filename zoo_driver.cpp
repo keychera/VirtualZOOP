@@ -13,21 +13,23 @@ int main() {
     {
         for(int j=0;j<Z.getlength();j++)
         {
+            cout<<Z.getCells()[i*Z.getlength()+j]->GetX();
+            cout<<Z.getCells()[i*Z.getlength()+j]->GetY();
             Z.getCells()[i*Z.getlength()+j]->Render();
         }
         cout<<endl;
     }
     Z.MakeCage();
-    cout<<Z.getNCages()<<endl;
+    cout<<Z.getNCages()<<endl;/*
     for(int i=0;i<Z.getNCages();i++)
     {
         cout<<"Cage "<<i+1<<endl;
-        cout<<"size"<<Z.getCages()[i]->getsize()<<endl;
-        for(int j=0;j<Z.getCages()[i]->getsize();j++)
+        cout<<"size"<<Z.getCages()[i]->getSize()<<endl;
+        for(int j=0;j<Z.getCages()[i]->getSize();j++)
         {
             cout<<Z.getCages()[i]->getArea()[j].GetX()<<' '<<Z.getCages()[i]->getArea()[j].GetY()<<endl;
         }
-    }/*
+    }*//*
     Cat C;
     Z.getCages()[1]->AddAnimal(&C);
     cout<<Z.getCages()[1]->getAnimals()[Z.getCages()[1]->getNAnimal()]->GetX()<<endl;

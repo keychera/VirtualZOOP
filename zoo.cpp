@@ -105,7 +105,7 @@ void Zoo::ReadZoo(const char* filename)
             }else{
                 Cells[j]=new Road;
             }
-            cout<<j<<Cells[j]->gettype()<<endl;
+            //cout<<j<<Cells[j]->getType()<<endl;
             j++;
         }
     }
@@ -117,8 +117,8 @@ void Zoo::ReadZoo(const char* filename)
     cout<<length;
     for(int i=0;i<(j);i++)
     {
-        Cells[i]->SetX(i%length);
-        Cells[i]->SetY(i/length);
+        Cells[i]->SetX(i/length);
+        Cells[i]->SetY(i%length);
     }
     cout<<"done";
 }
@@ -159,7 +159,7 @@ void Zoo::MakeCage()
     int count=0;
     while(count<(width*length))
     {
-        if((!check[count])&&(strcmp(Cells[count]->getname(),"habitat")==0))
+        if((!check[count])&&(strcmp(Cells[count]->getName(),"habitat")==0))
         {
            
             int* queue;
@@ -167,7 +167,7 @@ void Zoo::MakeCage()
             queue = (int*) malloc (sizeof(int)*(width*length));
             int checked=0;
             char* name;
-            name=Cells[count]->gettype();
+            name=Cells[count]->getType();
             //cout<<name<<endl;
             queue[i]=count;
             check[queue[i]]=true;
@@ -175,9 +175,9 @@ void Zoo::MakeCage()
             {
                 if((queue[checked]+1>=0)&&(queue[checked]+1<(width*length))&&(!check[queue[checked]+1]))
                 {
-                    //if(strcmp(Cells[queue[checked]+1]->getname(),"habitat")==0)
+                    //if(strcmp(Cells[queue[checked]+1]->getName(),"habitat")==0)
                     //{
-                        if(strcmp(Cells[queue[checked]+1]->gettype(),name)==0)
+                        if(strcmp(Cells[queue[checked]+1]->getType(),name)==0)
                         {
                             i++;
                             queue[i]=queue[checked]+1;
@@ -187,9 +187,9 @@ void Zoo::MakeCage()
                 }
                 if((queue[checked]-1>=0)&&(queue[checked]-1<(width*length))&&(!check[queue[checked]-1]))
                 {
-                    //if(strcmp(Cells[queue[checked]-1]->getname(),"habitat")==0)
+                    //if(strcmp(Cells[queue[checked]-1]->getName(),"habitat")==0)
                     //{
-                        if(strcmp(Cells[queue[checked]-1]->gettype(),name)==0)
+                        if(strcmp(Cells[queue[checked]-1]->getType(),name)==0)
                         {
                             i++;
                             queue[i]=queue[checked]-1;
@@ -199,9 +199,9 @@ void Zoo::MakeCage()
                 }
                 if((queue[checked]+length>=0)&&(queue[checked]+length<(width*length))&&(!check[queue[checked]+length]))
                 {
-                    //if(strcmp(Cells[queue[checked]+length]->getname(),"habitat")==0)
+                    //if(strcmp(Cells[queue[checked]+length]->getName(),"habitat")==0)
                     //{
-                        if(strcmp(Cells[queue[checked]+length]->gettype(),name)==0)
+                        if(strcmp(Cells[queue[checked]+length]->getType(),name)==0)
                         {
                             i++;
                             queue[i]=queue[checked]+length;
@@ -212,7 +212,7 @@ void Zoo::MakeCage()
                 if((queue[checked]-length>=0)&&(queue[checked]+length<(width*length))&&(!check[queue[checked]-length]))
                 {
                 
-                        if(strcmp(Cells[queue[checked]-length]->gettype(),name)==0)
+                        if(strcmp(Cells[queue[checked]-length]->getType(),name)==0)
                         {
                             i++;
                             queue[i]=queue[checked]-length;

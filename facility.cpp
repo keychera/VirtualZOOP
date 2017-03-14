@@ -3,14 +3,14 @@
 using namespace std;
 
 Facility::Facility():Cell(){};
-char* Facility::getname()
+char* Facility::getName()
 {
     char* c=(char*)"facility";
     return c;
 }
 
 Road::Road():Facility(){};
-char* Road::gettype()
+char* Road::getType()
 {
     char* c=(char*)"Road";
     return c;
@@ -19,17 +19,9 @@ void Road::Render()
 {
     cout<<" ";
 }
-char* Road::getName()
-{
-    return name;
-}
-void Road::setName(char* _name)
-{
-    name=_name;
-}  
 
 Entrance::Entrance():Road(){};
-char* Entrance::gettype()
+char* Entrance::getType()
 {
     char* c=(char*)"Entrance";
     return c;
@@ -44,13 +36,13 @@ void Exit::Render()
 {
     cout<<'@';
 }
-char* Exit::gettype()
+char* Exit::getType()
 {
     return (char*)"Exit";
 }
 
 Restaurant::Restaurant():Facility(){};
-char* Restaurant::gettype()
+char* Restaurant::getType()
 {
     char* c=(char*)"Restaurant";
     return c;
@@ -59,17 +51,10 @@ void Restaurant::Render()
 {
     cout<<'R';
 }
-char* Restaurant::getName()
-{
-    return RestName;
-}
-void Restaurant::setName(char* name)
-{
-    RestName=name;
-}
+
 
 Park::Park():Facility(){};
-char* Park::gettype()
+char* Park::getType()
 {
     char* c=(char*)"Park";
     return c;
@@ -77,12 +62,4 @@ char* Park::gettype()
 void Park::Render()
 {
     cout<<"P";
-}
-char* Park::getName()
-{
-    return parkname;
-}
-void Park::setName(char* name)
-{
-    parkname=name;
 }

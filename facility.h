@@ -4,27 +4,26 @@
 class Facility:public Cell{
     public:
         Facility();
-        virtual char* getName()=0;
-        virtual void setName(char* name)=0;
-        virtual char* gettype()=0;
-        char* getname();
+        //virtual void setName(char* name)=0;
+        virtual char* getType()=0;
+        char* getName();
 };
 
 class Road: public Facility{
     public:
         Road();
-        virtual char* gettype();  
+        virtual char* getType();  
         virtual void Render();
-        char* getName();
+        /*char* getFacilityName
         void setName(char* _name);   
     protected:
-        char* name;
+        char* name;*/
 };
 
 class Entrance: public Road{
     public:
         Entrance();
-        char* gettype();
+        char* getType();
         void Render();
 };
 
@@ -32,29 +31,27 @@ class Exit: public Road{
     public:
         Exit();
         void Render();
-        char* gettype();
+        char* getType();
 };
 
 class Restaurant: public Facility{
     public:
         Restaurant();
         void Render();
-        char* getName();
-        void setName(char* name);
-        char* gettype();
-    private:
-        char* RestName;
+        //void setName(char* name);
+        char* getType();
+    //private:
+      //  char* RestName;
 };
 
 class Park: public Facility{
     public:
         Park();
         void Render();
-        char* getName();
-        void setName(char* name);
-        char* gettype();
-    private:
-        char* parkname;
+        //void setName(char* name);
+        char* getType();
+   // private:
+     //   char* parkname;*/
 };
 
 #endif
