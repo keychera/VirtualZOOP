@@ -51,7 +51,7 @@ Cage& Cage::operator=(const Cage& C)
     }
 }
 
-int Cage::getsize()
+int Cage::getSize()
 {
     return size;
 }
@@ -71,7 +71,7 @@ void Cage::MovementManager()
         while((!moved)&&(count<=4))
         {
             Location m=move(Animals[i],random);
-            if ((isInCage(m)&&(!isthereanimal(m))))
+            if ((isInCage(m)&&(!isThereAnimal(m))))
             {
                 Animals[i]->SetX(m.GetX());
                 Animals[i]->SetY(m.GetY());
@@ -100,7 +100,7 @@ Location Cage::move(Animal* A,int i)
     }
     return L1;
 }
-bool Cage::isthereanimal(Location& L)
+bool Cage::isThereAnimal(Location& L)
 {
     bool found=false;
     int i=0;
@@ -137,7 +137,7 @@ void Cage::AddAnimal(Animal* A)
         bool found=false;
         while((i<size)&&(!found))
         {
-            if(!isthereanimal(area[i]))
+            if(!isThereAnimal(area[i]))
             {
                 Animals[NAnimal]->SetX(area[i].GetX());
                 Animals[NAnimal]->SetY(area[i].GetY());
@@ -162,7 +162,7 @@ int Cage::getNAnimal()
     return NAnimal;
 }
 
-const char* Cage::gethabitat()
+const char* Cage::getHabitat()
 {
     return habitat;
 }
