@@ -22,6 +22,7 @@ int main() {
     for(int i=0;i<Z.getNCages();i++)
     {
         cout<<"Cage "<<i+1<<endl;
+        cout<<"size"<<Z.getCages()[i]->getsize()<<endl;
         for(int j=0;j<Z.getCages()[i]->getsize();j++)
         {
             cout<<Z.getCages()[i]->getArea()[j].getX()<<' '<<Z.getCages()[i]->getArea()[j].getY()<<endl;
