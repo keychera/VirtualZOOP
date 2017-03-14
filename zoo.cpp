@@ -1,16 +1,19 @@
 #include "zoo.h"
 #include <stdio.h>
 #include <string.h>
+
 Zoo::Zoo():width(DEFSIZE),length(DEFSIZE)
 {
     Cells=new Cell*[width*length];
     Cages=new Cage*[DEFSIZE];
 }
+
 Zoo::Zoo(int w, int l):width(w),length(l)
 {
     Cells=new Cell*[width*length];
     Cages=new Cage*[DEFSIZE];
 }
+
 Zoo::Zoo(const Zoo& z):width(z.width),length(z.length)
 {
     NCages=z.NCages;
@@ -23,6 +26,7 @@ Zoo::Zoo(const Zoo& z):width(z.width),length(z.length)
         Cages[i]=z.Cages[i];
     }
 }
+
 Zoo::~Zoo()
 {  
     delete[] Cells;
@@ -33,6 +37,7 @@ Zoo::~Zoo()
     }
     //cout<<"dtor";
 }
+
 Zoo& Zoo::operator= (const Zoo& Z)
 {
     delete[] Cells;
@@ -47,7 +52,9 @@ Zoo& Zoo::operator= (const Zoo& Z)
         {
             Cages[j]=Z.Cages[j];
         }
+  return *this;
 }
+
 void Zoo::ReadZoo(const char* filename)
 {
     FILE *f;
@@ -110,31 +117,37 @@ void Zoo::ReadZoo(const char* filename)
     cout<<length;
     for(int i=0;i<(j);i++)
     {
-        Cells[i]->setX(i%length);
-        Cells[i]->setY(i/length);
+        Cells[i]->SetX(i%length);
+        Cells[i]->SetY(i/length);
     }
     cout<<"done";
 }
+
 int Zoo::getwidth()
 {
     return width;
 }
+
 int Zoo::getlength()
 {
     return length;
 }
+
 Cell** Zoo::getCells()
 {
     return Cells;
 }
+
 Cage** Zoo::getCages()
 {
     return Cages;
 }
+
 int Zoo::getNCages()
 {
-    return NCages;
+  return NCages;
 }
+
 void Zoo::MakeCage()
 {
     NCages=0;
@@ -238,4 +251,14 @@ void Zoo::MakeCage()
         check[count]=true;
         count++;
     }
+}
+
+Cell* Zoo::AccessCell(int x,int y){
+  int i = 0;
+  while ((i < width*length) && (Cells[i]->GetX() == x) && (Cells[i]->GetY() == y))
+    i++;
+  if (i != width*length)
+    return Cells[i];
+  else
+    return NULL;
 }

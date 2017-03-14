@@ -34,24 +34,24 @@ class Location {
 		 * @brief getter for X value
 		 * @return integer
 		 */
-		int getX();
+		int GetX();
 		/**
 		 * @brief getter for Y value
 		 * @return integer
 		 */
-		int getY();
+		int GetY();
 		/**
 		 * @brief setter for X value
 		 * @param x
 		 * @return void
 		 */
-		void setX(int);
+		void SetX(int);
 		/**
 		 * @brief setter for Y value
 		 * @param y
 		 * @return void
 		 */
-		void setY(int);
+		void SetY(int);
 	private :
 		int x;	///< the x integer value of the location
 		int y;	///< the y integer value of the location

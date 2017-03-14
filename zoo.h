@@ -10,14 +10,22 @@ class Zoo {
         Zoo(int w, int l);
         Zoo(const Zoo& z);
         ~Zoo();
+        
         Zoo& operator= (const Zoo& Z);
+        
         void ReadZoo(const char* filename);
+        
         int getwidth();
         int getlength();
         Cell** getCells();
         Cage** getCages();
         int getNCages();
+        
+        Cell* AccessCell(int x,int y);
+        
         void MakeCage();
+        
+        
     private:
         Cell** Cells;
         Cage** Cages;

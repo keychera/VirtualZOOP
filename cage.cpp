@@ -73,8 +73,8 @@ void Cage::MovementManager()
             Location m=move(Animals[i],random);
             if ((isInCage(m)&&(!isthereanimal(m))))
             {
-                Animals[i]->setX(m.getX());
-                Animals[i]->setY(m.getY());
+                Animals[i]->SetX(m.GetX());
+                Animals[i]->SetY(m.GetY());
                 moved=true;
             }
             count++;
@@ -84,19 +84,19 @@ void Cage::MovementManager()
 }
 Location Cage::move(Animal* A,int i)
 {
-    Location L1(A->getX(),A->getY());
+    Location L1(A->GetX(),A->GetY());
     if(i==0)
     {
-        L1.setY(L1.getY()-1);
+        L1.SetY(L1.GetY()-1);
     }else if(i==1)
     {
-        L1.setX(L1.getX()+1);
+        L1.SetX(L1.GetX()+1);
     }else if (i==2)
     {
-        L1.setY(L1.getY()+1);
+        L1.SetY(L1.GetY()+1);
     }else if(i==3)
     {
-        L1.setX(L1.getX()-1);
+        L1.SetX(L1.GetX()-1);
     }
     return L1;
 }
@@ -106,7 +106,7 @@ bool Cage::isthereanimal(Location& L)
     int i=0;
     while((!found)&&(i<NAnimal))
     {
-        if((Animals[i]->getX()==L.getX())&&(Animals[i]->getY()==L.getY()))
+        if((Animals[i]->GetX()==L.GetX())&&(Animals[i]->GetY()==L.GetY()))
         {
             found=true;
         }
@@ -120,7 +120,7 @@ bool Cage::isInCage(Location& L)
     int i=0;
     while((!found)&&(i<size))
     {
-        if((area[i].getX()==L.getX())&&(area[i].getY()==L.getY()))
+        if((area[i].GetX()==L.GetX())&&(area[i].GetY()==L.GetY()))
         {
             found=true;
         }
@@ -139,8 +139,8 @@ void Cage::AddAnimal(Animal* A)
         {
             if(!isthereanimal(area[i]))
             {
-                Animals[NAnimal]->setX(area[i].getX());
-                Animals[NAnimal]->setY(area[i].getY());
+                Animals[NAnimal]->SetX(area[i].GetX());
+                Animals[NAnimal]->SetY(area[i].GetY());
                 found=true;
             }
             i++;
