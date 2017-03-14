@@ -104,6 +104,8 @@ class Zoo {
          * @param y
          * @return int
          */
+         void ReadAnimal(const char *filename);
+         void AddAnimaltoZoo(Animal* A);
         int GetIndexCage(int x,int y);
         void Print();
     

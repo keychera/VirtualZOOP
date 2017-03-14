@@ -3,6 +3,9 @@
 #include <stdlib.h>
 #include <string.h>
 #include <cstdlib>
+#include <bits/stdc++.h>
+using namespace std;
+
 Zoo::Zoo():width(DEFSIZE),length(DEFSIZE)
 {
   Cells=new Cell*[width*length];
@@ -240,7 +243,163 @@ void Zoo::MakeCage()
     count++;
   }
 }
-
+void Zoo::ReadAnimal(const char *filename) {
+// map_animal.txt formatnya selalu "C3", yaitu kode hewan dan jumlah hewan
+// hewan = menentukan hewan apa yg di implementasi di map
+// n_hewan = menentukan jumlah hewan yg dibuat
+	ifstream f;
+	f.open(filename);
+	char output[2];
+	char hewan;
+	int n_hewan;
+	if (f.is_open()) {
+		while (!f.eof()) {
+			f >> output;
+			hewan = output[0];
+			n_hewan = ((int) output[1] - 48);
+      Animal* A;
+		  for(int i=1;i<=n_hewan;i++)
+      {
+        if(hewan=='c')
+        {
+          A=new Cat;
+        }else if(hewan=='C')
+        {
+          A=new Cheetah;
+        }else if(hewan=='L')
+        {
+          A=new Lion;
+        }else if(hewan=='l')
+        {
+          A=new Leopard;
+        }else if(hewan=='T')
+        {
+          A=new Tiger;
+        }else if(hewan=='B')
+        {
+          A=new Beluga;
+        }else if(hewan=='N')
+        {
+          A=new Narwhal;
+        }else if(hewan=='D')
+        {
+          A=new Dolphin;
+        }else if(hewan=='O')
+        {
+          A=new Orca;
+        }else if(hewan=='d')
+        {
+          A=new Damselfish;
+        }else if(hewan=='c')
+        {
+          A=new Coyote;
+        }else if(hewan=='W')
+        {
+          A=new Wolf;
+        }else if(hewan=='F')
+        {
+          A=new RedFox;
+        }else if(hewan=='f')
+        {
+          A=new ArcticFox;
+        }else if(hewan=='K')
+        {
+          A=new Komodo;
+        }else if(hewan =='b')
+        {
+          A=new Biawak;
+        }else if(hewan=='J')
+        {
+          A=new BadakJawa;
+        }else if(hewan=='S')
+        {
+          A=new BadakSumatra;
+        }else if(hewan=='E')
+        {
+          A=new BaldEagle;
+        }else if(hewan=='e')
+        {
+          A=new GoldenEagle;
+        }else if(hewan=='R')
+        {
+          A=new RedKite;
+        }else if(hewan=='k')
+        {
+          A=new BlackKite;
+        }else
+        {
+          A=new Axolotl;
+        }
+        AddAnimaltoZoo(A);
+      }
+		}
+	}
+	f.close();
+}
+void Zoo::AddAnimaltoZoo(Animal* A)
+{
+  if(A->IsLand())
+  {
+    bool found=false;
+    int i=0;
+    while((i<NCages)&&(!found))
+    {
+      if((strcmp(Cages[i]->GetHabitat(),"LandHabitat")))
+      {
+        found=true;
+      }else{
+        i++;
+      }
+    }
+    if(i==NCages)
+    {
+      cout<<"gagal";
+    }else
+    {
+      Cages[i]->AddAnimal(A);
+    }
+  }else if(A->IsWater())
+  {
+    bool found=false;
+    int i=0;
+    while((i<NCages)&&(!found))
+    {
+      if((strcmp(Cages[i]->GetHabitat(),"WaterHabitat")))
+      {
+        found=true;
+      }else{
+        i++;
+      }
+    }
+    if(i==NCages)
+    {
+      cout<<"gagal";
+    }else
+    {
+      Cages[i]->AddAnimal(A);
+    }
+  }else
+  {
+    bool found=false;
+    int i=0;
+    while((i<NCages)&&(!found))
+    {
+      if((strcmp(Cages[i]->GetHabitat(),"AirHabitat")))
+      {
+        found=true;
+      }else{
+        i++;
+      }
+    }
+    if(i==NCages)
+    {
+      cout<<"gagal";
+    }else
+    {
+      Cages[i]->AddAnimal(A);
+    }
+  }
+}
 Cell* Zoo::AccessCell(int x,int y){
   int i = 0;
   bool found = false;
@@ -284,6 +443,7 @@ void Zoo::Print()
         if(strcmp(Cells[i*length+j]->GetName(),"habitat")==0)
         {
           int indeks=GetIndexCage(i,j);
+          cout<<indeks<<endl;
           int iAn=-1;
           if(Cages[indeks]->GetNAnimal()>0)
           {
@@ -295,6 +455,8 @@ void Zoo::Print()
               }
             }
           }
+          
+          cout<<"done";
           if(iAn!=(-1))//ada animal
           {
             Cages[indeks]->GetAnimals()[iAn]->Render();
@@ -304,7 +466,8 @@ void Zoo::Print()
           }
         }else
         {
-            Cells[i*length+j]->Render();
+          cout<<"non";
+          Cells[i*length+j]->Render();
         }
       }
       cout<<endl;
