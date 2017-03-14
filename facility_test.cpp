@@ -12,10 +12,10 @@ TEST(FacilityTest, GetTextMethod) {
   Entrance En;
   Restaurant Res;
   Park P;
-  ASSERT_EQ("facility", R.getName());
-  ASSERT_EQ("Road",R.getType());
-  ASSERT_EQ("Exit",Ex.getType());
-  ASSERT_EQ("Entrance",En.getType());
-  ASSERT_EQ("Restaurant",Res.getType());
-  ASSERT_EQ("Park",P.getType());
+  ASSERT_EQ("facility", R.GetName());
+  ASSERT_EQ("Road",R.GetType());
+  ASSERT_EQ("Exit",Ex.GetType());
+  ASSERT_EQ("Entrance",En.GetType());
+  ASSERT_EQ("Restaurant",Res.GetType());
+  ASSERT_EQ("Park",P.GetType());
 }

@@ -8,27 +8,27 @@ int main() {
     cout<<"done"<<endl;
     Z.ReadZoo(filename.c_str());
     cout<<"done"<<endl;
-    cout<<Z.getwidth()<<endl;
-    cout<<Z.getlength()<<endl;
-    for(int i=0;i<Z.getwidth();i++)
+    cout<<Z.GetWidth()<<endl;
+    cout<<Z.GetLength()<<endl;
+    for(int i=0;i<Z.GetWidth();i++)
     {
-        for(int j=0;j<Z.getlength();j++)
+        for(int j=0;j<Z.GetLength();j++)
         {
-            cout<<Z.getCells()[i*Z.getlength()+j]->GetX();
-            cout<<Z.getCells()[i*Z.getlength()+j]->GetY();
-            Z.getCells()[i*Z.getlength()+j]->Render();
+            cout<<Z.GetCells()[i*Z.GetLength()+j]->GetX();
+            cout<<Z.GetCells()[i*Z.GetLength()+j]->GetY();
+            Z.GetCells()[i*Z.GetLength()+j]->Render();
         }
         cout<<endl;
     }
     Z.MakeCage();
-    cout<<Z.getNCages()<<endl;/*
-    for(int i=0;i<Z.getNCages();i++)
+    cout<<Z.GetNCages()<<endl;/*
+    for(int i=0;i<Z.GetNCages();i++)
     {
         cout<<"Cage "<<i+1<<endl;
-        cout<<"size"<<Z.getCages()[i]->getSize()<<endl;
-        for(int j=0;j<Z.getCages()[i]->getSize();j++)
+        cout<<"size"<<Z.GetCages()[i]->GetSize()<<endl;
+        for(int j=0;j<Z.GetCages()[i]->GetSize();j++)
         {
-            cout<<Z.getCages()[i]->getArea()[j].GetX()<<' '<<Z.getCages()[i]->getArea()[j].GetY()<<endl;
+            cout<<Z.GetCages()[i]->GetArea()[j].GetX()<<' '<<Z.GetCages()[i]->GetArea()[j].GetY()<<endl;
         }
     }*//*
     Cat C;

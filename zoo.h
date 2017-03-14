@@ -15,11 +15,11 @@ class Zoo {
         
         void ReadZoo(const char* filename);
         
-        int getwidth();
-        int getlength();
-        Cell** getCells();
-        Cage** getCages();
-        int getNCages();
+        int GetWidth();
+        int GetLength();
+        Cell** GetCells();
+        Cage** GetCages();
+        int GetNCages();
         
         Cell* AccessCell(int x,int y);
         

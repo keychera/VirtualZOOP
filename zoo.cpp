@@ -106,7 +106,7 @@ void Zoo::ReadZoo(const char* filename)
             }else{
                 Cells[j]=new Road;
             }
-            //cout<<j<<Cells[j]->getType()<<endl;
+            //cout<<j<<Cells[j]->GetType()<<endl;
             j++;
         }
     }
@@ -124,27 +124,27 @@ void Zoo::ReadZoo(const char* filename)
     cout<<"done";
 }
 
-int Zoo::getwidth()
+int Zoo::GetWidth()
 {
     return width;
 }
 
-int Zoo::getlength()
+int Zoo::GetLength()
 {
     return length;
 }
 
-Cell** Zoo::getCells()
+Cell** Zoo::GetCells()
 {
     return Cells;
 }
 
-Cage** Zoo::getCages()
+Cage** Zoo::GetCages()
 {
     return Cages;
 }
 
-int Zoo::getNCages()
+int Zoo::GetNCages()
 {
   return NCages;
 }
@@ -160,7 +160,7 @@ void Zoo::MakeCage()
     int count=0;
     while(count<(width*length))
     {
-        if((!check[count])&&(strcmp(Cells[count]->getName(),"habitat")==0))
+        if((!check[count])&&(strcmp(Cells[count]->GetName(),"habitat")==0))
         {
            
             int* queue;
@@ -168,7 +168,7 @@ void Zoo::MakeCage()
             queue = (int*) malloc (sizeof(int)*(width*length));
             int checked=0;
             char* name;
-            name=Cells[count]->getType();
+            name=Cells[count]->GetType();
             //cout<<name<<endl;
             queue[i]=count;
             check[queue[i]]=true;
@@ -176,9 +176,9 @@ void Zoo::MakeCage()
             {
                 if((queue[checked]+1>=0)&&(queue[checked]+1<(width*length))&&(!check[queue[checked]+1]))
                 {
-                    //if(strcmp(Cells[queue[checked]+1]->getName(),"habitat")==0)
+                    //if(strcmp(Cells[queue[checked]+1]->GetName(),"habitat")==0)
                     //{
-                        if(strcmp(Cells[queue[checked]+1]->getType(),name)==0)
+                        if(strcmp(Cells[queue[checked]+1]->GetType(),name)==0)
                         {
                             i++;
                             queue[i]=queue[checked]+1;
@@ -188,9 +188,9 @@ void Zoo::MakeCage()
                 }
                 if((queue[checked]-1>=0)&&(queue[checked]-1<(width*length))&&(!check[queue[checked]-1]))
                 {
-                    //if(strcmp(Cells[queue[checked]-1]->getName(),"habitat")==0)
+                    //if(strcmp(Cells[queue[checked]-1]->GetName(),"habitat")==0)
                     //{
-                        if(strcmp(Cells[queue[checked]-1]->getType(),name)==0)
+                        if(strcmp(Cells[queue[checked]-1]->GetType(),name)==0)
                         {
                             i++;
                             queue[i]=queue[checked]-1;
@@ -200,9 +200,9 @@ void Zoo::MakeCage()
                 }
                 if((queue[checked]+length>=0)&&(queue[checked]+length<(width*length))&&(!check[queue[checked]+length]))
                 {
-                    //if(strcmp(Cells[queue[checked]+length]->getName(),"habitat")==0)
+                    //if(strcmp(Cells[queue[checked]+length]->GetName(),"habitat")==0)
                     //{
-                        if(strcmp(Cells[queue[checked]+length]->getType(),name)==0)
+                        if(strcmp(Cells[queue[checked]+length]->GetType(),name)==0)
                         {
                             i++;
                             queue[i]=queue[checked]+length;
@@ -213,7 +213,7 @@ void Zoo::MakeCage()
                 if((queue[checked]-length>=0)&&(queue[checked]+length<(width*length))&&(!check[queue[checked]-length]))
                 {
                 
-                        if(strcmp(Cells[queue[checked]-length]->getType(),name)==0)
+                        if(strcmp(Cells[queue[checked]-length]->GetType(),name)==0)
                         {
                             i++;
                             queue[i]=queue[checked]-length;
@@ -229,7 +229,7 @@ void Zoo::MakeCage()
             for(int ar=0;ar<(i+1);ar++)
             {
                 Location L((queue[ar]%length),(queue[ar]/length));
-                C->getArea()[ar]=L;
+                C->GetArea()[ar]=L;
             }
             //membuat array temp untuk menyimpan array cage lama
             Cage** temp=new Cage*[NCages];
