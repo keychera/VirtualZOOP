@@ -1,12 +1,12 @@
-#include "habitat.h"
+#include "cage.h"
 #include <gtest/gtest.h>
 
-class HabitatTest : public ::testing::Test {
+class CageTest : public ::testing::Test {
   protected:
-    HabitatTest(){}
+    CageTest(){}
 };
 
-TEST(HabitatTest, GetTextMethod) {
+TEST(CageTest, GetTextMethod) {
   AirHabitat A;
   WaterHabitat W;
   LandHabitat L;
