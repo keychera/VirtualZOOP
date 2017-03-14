@@ -119,8 +119,8 @@ void Zoo::ReadZoo(const char* filename)
     cout<<length;
     for(int i=0;i<(j);i++)
     {
-        Cells[i]->SetX(i/length);
-        Cells[i]->SetY(i%length);
+        Cells[i]->SetX(i%length);
+        Cells[i]->SetY(i/length);
     }
     cout<<"done";
 }

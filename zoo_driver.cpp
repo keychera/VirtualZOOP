@@ -35,15 +35,19 @@ int main() {
     Z.getCages()[1]->AddAnimal(&C);
     cout<<Z.getCages()[1]->getAnimals()[Z.getCages()[1]->getNAnimal()]->GetX()<<endl;
     cout<<Z.getCages()[1]->getAnimals()[Z.getCages()[1]->getNAnimal()]->GetY()<<endl;*/
-    /*
-  cout << "Tour Begins" << endl;
-  
-  Tour t(Z);
-  t.PrintRoute();
-  
-  cout << "Tour Ends" << endl;
-  */
-  
-    cout<<"done" << endl;
+  char tourYES;
+  cout << "Input a char 'Y' to begin the tour" << endl;
+  cin >> tourYES;
+  if (tourYES == 'Y') {
+    cout << "Tour begins" << endl << endl;
+    
+    Tour t(Z);
+    t.TraceWholeRoute();
+    
+    cout << endl << "Tour ends" << endl ;
+  } else {
+    cout << "Tour doesn't begin" << endl << endl;
+  }
+  cout<<"done" << endl;
 return 0;
 }
