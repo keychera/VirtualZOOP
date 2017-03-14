@@ -1,13 +1,13 @@
 #ifndef FACILITY_H
 #define FACILITY_H
-
 #include "cell.h"
 class Facility:public Cell{
     public:
         Facility();
-        virtual void render()=0;
         virtual char* getName()=0;
         virtual void setName(char* name)=0;
+        virtual char* gettype()=0;
+        char* getname();
 };
 
 class Road: public Facility{
@@ -15,8 +15,9 @@ class Road: public Facility{
         Road();
         //Road(const Road& R);
         //~Road();
-        //Road& operator=(const Road& R);     
-        virtual void render();
+        //Road& operator=(const Road& R);   
+        virtual char* gettype();  
+        virtual void Render();
         char* getName();
         void setName(char* _name);   
     protected:
@@ -29,7 +30,8 @@ class Entrance: public Road{
         //Entrance(const Entrance& E);
         //~Entrance();
         //Entrance& operator=(const Entrance& E);
-        void render();
+        char* gettype();
+        void Render();
 };
 
 class Exit: public Road{
@@ -38,15 +40,17 @@ class Exit: public Road{
         //Exit(const Exit& E);
         //~Exit();
         //Exit& operator=(const Exit& E);
-        void render();
+        void Render();
+        char* gettype();
 };
 
 class Restaurant: public Facility{
     public:
         Restaurant();
-        void render();
+        void Render();
         char* getName();
         void setName(char* name);
+        char* gettype();
     private:
         char* RestName;
 };
@@ -54,17 +58,18 @@ class Restaurant: public Facility{
 class Park: public Facility{
     public:
         Park();
-        void render();
+        void Render();
         char* getName();
         void setName(char* name);
+        char* gettype();
     private:
         char* parkname;
 };
 class Habitat: public Cell{
     public:
         Habitat();
-        virtual void render()=0;
-        virtual const char* gethabitat()=0;
+        char* getname();
+        virtual char* gettype()=0;
 };
 
 class LandHabitat: public Habitat{
@@ -73,10 +78,8 @@ class LandHabitat: public Habitat{
         //LandHabitat(const LandHabitat& L);
         //~LandHabitat();
         //LandHabitat& operator=(const LandHabitat& L);
-        void render();
-        const char* gethabitat();
-    private:
-        const char* habitat="LandHabitat";
+        void Render();
+        char* gettype();
 };
 
 class WaterHabitat: public Habitat{
@@ -85,10 +88,8 @@ class WaterHabitat: public Habitat{
         WaterHabitat(const WaterHabitat& W);
         ~WaterHabitat();
         WaterHabitat& operator= (const WaterHabitat& W);*/
-        void render();
-        const char* gethabitat();
-    private:
-        const char* habitat="WaterHabitat";
+        void Render();
+        char* gettype();
 };
 
 class AirHabitat: public Habitat{
@@ -97,10 +98,7 @@ class AirHabitat: public Habitat{
         //AirHabitat(const AirHabitat& A);
         //~AirHabitat();
         //AirHabitat& operator= (const WaterHabitat& A);
-        void render();
-        const char* gethabitat();
-    private:
-        const char* habitat="AirHabitat";
+        void Render();
+        char* gettype();
 };
-
 #endif

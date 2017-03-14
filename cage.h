@@ -15,8 +15,8 @@ class Cage{
         Location* getArea();
         void MovementManager();
         Location move(Animal* A,int i);
-        bool isthereanimal(Location L);
-        bool isInCage(Location L);
+        bool isthereanimal(Location& L);
+        bool isInCage(Location& L);
         void AddAnimal(Animal* A);
         Animal** getAnimals();
         int getNAnimal();

@@ -71,10 +71,11 @@ void Cage::MovementManager()
         while((!moved)&&(count<=4))
         {
             Location m=move(Animals[i],random);
-            if (!(isInCage(m)||(isthereanimal(m))))
+            if ((isInCage(m)&&(!isthereanimal(m))))
             {
                 Animals[i]->setX(m.getX());
                 Animals[i]->setY(m.getY());
+                moved=true;
             }
             count++;
             random=(random+1)%4;
@@ -86,20 +87,20 @@ Location Cage::move(Animal* A,int i)
     Location L1(A->getX(),A->getY());
     if(i==0)
     {
-        L1.setX(L1.getY()-1);
+        L1.setY(L1.getY()-1);
     }else if(i==1)
     {
         L1.setX(L1.getX()+1);
     }else if (i==2)
     {
-        L1.setX(L1.getY()+1);
+        L1.setY(L1.getY()+1);
     }else if(i==3)
     {
         L1.setX(L1.getX()-1);
     }
     return L1;
 }
-bool Cage::isthereanimal(Location L)
+bool Cage::isthereanimal(Location& L)
 {
     bool found=false;
     int i=0;
@@ -113,7 +114,7 @@ bool Cage::isthereanimal(Location L)
     }   
     return found; 
 }
-bool Cage::isInCage(Location L)
+bool Cage::isInCage(Location& L)
 {
     bool found=false;
     int i=0;
@@ -131,9 +132,7 @@ void Cage::AddAnimal(Animal* A)
 {
     if(NAnimal<(size*2/3))
     {
-        cout<<"addanimal"<<endl;
-        Animals[NAnimal+1]=A;
-        cout<<NAnimal;
+        Animals[NAnimal]=A;
         int i=0;
         bool found=false;
         while((i<size)&&(!found))
@@ -147,7 +146,6 @@ void Cage::AddAnimal(Animal* A)
             i++;
         }
         NAnimal++;
-        cout<<"done";
     }else
     {
         cout<<"full";

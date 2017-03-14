@@ -3,11 +3,21 @@
 using namespace std;
 
 Facility::Facility():Cell(){};
+char* Facility::getname()
+{
+    char* c=(char*)"facility";
+    return c;
+}
 
 Road::Road():Facility(){};
-void Road::render()
+char* Road::gettype()
 {
-    cout<<"Road";
+    char* c=(char*)"Road";
+    return c;
+}
+void Road::Render()
+{
+    cout<<" ";
 }
 char* Road::getName()
 {
@@ -19,21 +29,35 @@ void Road::setName(char* _name)
 }  
 
 Entrance::Entrance():Road(){};
-void Entrance::render()
+char* Entrance::gettype()
+{
+    char* c=(char*)"Entrance";
+    return c;
+}
+void Entrance::Render()
 {
     cout<<'E';
 }
 
 Exit::Exit():Road(){};
-void Exit::render()
+void Exit::Render()
 {
-    cout<<'x';
+    cout<<'@';
+}
+char* Exit::gettype()
+{
+    return (char*)"Exit";
 }
 
 Restaurant::Restaurant():Facility(){};
-void Restaurant::render()
+char* Restaurant::gettype()
 {
-    cout<<'r';
+    char* c=(char*)"Restaurant";
+    return c;
+}
+void Restaurant::Render()
+{
+    cout<<'R';
 }
 char* Restaurant::getName()
 {
@@ -45,7 +69,12 @@ void Restaurant::setName(char* name)
 }
 
 Park::Park():Facility(){};
-void Park::render()
+char* Park::gettype()
+{
+    char* c=(char*)"Park";
+    return c;
+}
+void Park::Render()
 {
     cout<<"P";
 }
@@ -58,34 +87,41 @@ void Park::setName(char* name)
     parkname=name;
 }
 Habitat::Habitat():Cell(){};
-
-LandHabitat::LandHabitat():Habitat(){};
-void LandHabitat::render()
+char* Habitat::getname()
 {
-    cout<<"LH";
+    char* c=(char*)"habitat";
+    return c;
 }
-const char* LandHabitat::gethabitat()
+LandHabitat::LandHabitat():Habitat(){};
+char* LandHabitat::gettype()
 {
-    return habitat;
+    char* c=(char*)"LandHabitat";
+    return c;
+}
+void LandHabitat::Render()
+{
+    cout<<"l";
 }
 
 
 WaterHabitat::WaterHabitat():Habitat(){};
-void WaterHabitat::render()
+char* WaterHabitat::gettype()
 {
-    cout<<"WH";
+    char* c=(char*)"WaterHabitat";
+    return c;
 }
-const char* WaterHabitat::gethabitat()
+void WaterHabitat::Render()
 {
-    return habitat;
+    cout<<"w";
 }
 
 AirHabitat::AirHabitat():Habitat(){};
-void AirHabitat::render()
+char* AirHabitat::gettype()
 {
-    cout<<"AH";
+    char* c=(char*)"AirHabitat";
+    return c;
 }
-const char* AirHabitat::gethabitat()
+void AirHabitat::Render()
 {
-    return habitat;
+    cout<<"a";
 }
