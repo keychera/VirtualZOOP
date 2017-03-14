@@ -1,7 +1,7 @@
 #include "zoo.h"
 #include <stdio.h>
 #include <string.h>
-
+#include <cstdlib>
 Zoo::Zoo():width(DEFSIZE),length(DEFSIZE)
 {
     Cells=new Cell*[width*length];

@@ -12,10 +12,10 @@ TEST(FacilityTest, GetTextMethod) {
   Entrance En;
   Restaurant Res;
   Park P;
-  ASSERT_EQ((char*)"facility", R.GetName());
-  ASSERT_EQ((char*)"Road",R.GetType());
-  ASSERT_EQ((char*)"Exit",Ex.GetType());
-  ASSERT_EQ((char*)"Entrance",En.GetType());
-  ASSERT_EQ((char*)"Restaurant",Res.GetType());
-  ASSERT_EQ((char*)"Park",P.GetType());
+  ASSERT_EQ(0,strcmp("facility", R.GetName()));
+  ASSERT_EQ(0,strcmp("Road",R.GetType()));
+  ASSERT_EQ(0,strcmp("Exit",Ex.GetType()));
+  ASSERT_EQ(0,strcmp("Entrance",En.GetType()));
+  ASSERT_EQ(0,strcmp("Restaurant",Res.GetType()));
+  ASSERT_EQ(0,strcmp("Park",P.GetType()));
 }
