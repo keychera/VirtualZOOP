@@ -1,5 +1,5 @@
 main: zoo_driver.o animal.o animal_list.o cage.o cell.o facility.o habitat.o location.o zoo.o
-	g++ zoo_driver.o animal.o animal_list.o cage.o cell.o facility.o habitat.o location.o zoo.o renderable.h -o main -std=c+=11
+	g++ zoo_driver.o animal.o animal_list.o cage.o cell.o facility.o habitat.o location.o zoo.o renderable.h -o main -std=c++11
 
 zoo_driver.o: zoo_driver.cpp
 	g++ -c zoo_driver.cpp -o zoo_driver.o
