@@ -1,28 +1,27 @@
 #include "cage.h"
 #include <iostream>
+#include <iomanip>
+#include <cstdlib>
+#include <time.h>
 using namespace std;
-template <class T>
-Cage<T>::Cage():Location(),size(0),habitat("")
+Cage::Cage():size(0),habitat("")
 {
     NAnimal=0;
     area=new Location[0];
-    Animals=new T[0];
+    Animals=new Animal*[0];
 }
-template <class T>
-Cage<T>::Cage(char* hab, int size):Location(),size(size),habitat(hab)
+Cage::Cage(char* hab, int size):size(size),habitat(hab)
 {
-    Animals=new T[size*2/3];
+    Animals=new Animal*[size*2/3];
     NAnimal=0;
     area=new Location[size];
 }
-template <class T>
-Cage<T>::~Cage()
+Cage::~Cage()
 {
     delete[] Animals;
     delete[] area;
 }
-template <class T>
-Cage<T>::Cage(const Cage<T>& C)
+Cage::Cage(const Cage& C):size(C.size),habitat(C.habitat)
 {
     for(int i=0;i<size;i++)
     {
@@ -34,11 +33,13 @@ Cage<T>::Cage(const Cage<T>& C)
         Animals[i]=C.Animals[i];
     }
 }
-template <class T>
-Cage<T>& Cage<T>::operator=(const Cage& C)
+Cage& Cage::operator=(const Cage& C)
 {
     delete[] Animals;
     delete[] area;
+    NAnimal=C.NAnimal;
+    Animals=new Animal*[NAnimal];
+    area=new Location[size];
     for(int i=0;i<size;i++)
     {
         area[i]=C.area[i];
@@ -49,45 +50,121 @@ Cage<T>& Cage<T>::operator=(const Cage& C)
         Animals[i]=C.Animals[i];
     }
 }
-template <class T>
-int Cage<T>::getsize()
+
+int Cage::getsize()
 {
     return size;
 }
-template <class T>
-Location* Cage<T>::getArea()
+
+Location* Cage::getArea()
 {
     return area;
 }
-template <class T>
-void Cage<T>::MovementManager()
+void Cage::MovementManager()
 {
-    
+    srand(time(NULL));
+    for(int i=0;i<NAnimal;i++)
+    {
+        int random=rand()%4;
+        bool moved=false;
+        int count=0;
+        while((!moved)&&(count<=4))
+        {
+            Location m=move(Animals[i],random);
+            if (!(isInCage(m)||(isthereanimal(m))))
+            {
+                Animals[i]->setX(m.getX());
+                Animals[i]->setY(m.getY());
+            }
+            count++;
+            random=(random+1)%4;
+        }
+    }
 }
-template <class T>
-void Cage<T>::AddAnimal(T& A)
+Location Cage::move(Animal* A,int i)
+{
+    Location L1(A->getX(),A->getY());
+    if(i==0)
+    {
+        L1.setX(L1.getY()-1);
+    }else if(i==1)
+    {
+        L1.setX(L1.getX()+1);
+    }else if (i==2)
+    {
+        L1.setX(L1.getY()+1);
+    }else if(i==3)
+    {
+        L1.setX(L1.getX()-1);
+    }
+    return L1;
+}
+bool Cage::isthereanimal(Location L)
+{
+    bool found=false;
+    int i=0;
+    while((!found)&&(i<NAnimal))
+    {
+        if((Animals[i]->getX()==L.getX())&&(Animals[i]->getY()==L.getY()))
+        {
+            found=true;
+        }
+        i++;
+    }   
+    return found; 
+}
+bool Cage::isInCage(Location L)
+{
+    bool found=false;
+    int i=0;
+    while((!found)&&(i<size))
+    {
+        if((area[i].getX()==L.getX())&&(area[i].getY()==L.getY()))
+        {
+            found=true;
+        }
+        i++;
+    }    
+    return found;
+}
+void Cage::AddAnimal(Animal* A)
 {
     if(NAnimal<(size*2/3))
     {
+        cout<<"addanimal"<<endl;
+        Animals[NAnimal+1]=A;
+        cout<<NAnimal;
+        int i=0;
+        bool found=false;
+        while((i<size)&&(!found))
+        {
+            if(!isthereanimal(area[i]))
+            {
+                Animals[NAnimal]->setX(area[i].getX());
+                Animals[NAnimal]->setY(area[i].getY());
+                found=true;
+            }
+            i++;
+        }
         NAnimal++;
-        Animals[NAnimal]=A;
+        cout<<"done";
     }else
     {
         cout<<"full";
     }
 }
-template <class T>
-T* Cage<T>::getAnimals()
+
+Animal** Cage::getAnimals()
 {
     return Animals;
 }
-template <class T>
-int Cage<T>::getNAnimal()
+
+int Cage::getNAnimal()
 {
     return NAnimal;
 }
-template <class T>
-const char* Cage<T>::gethabitat()
+
+const char* Cage::gethabitat()
 {
     return habitat;
 }

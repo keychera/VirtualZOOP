@@ -1,25 +1,9 @@
 #ifndef CAGE_H
 #define CAGE_H
-
-/**
- * @file	cage.h
- * @author	Harum Lokawati
- * @date	March 2017
- * @version VZ03
- * 
- * @brief	the header file containing class declaration for generic class Cage
- */
-
-#include "animal.h"
+#include "facility.h"
 #include <iostream>
 using namespace  std;
-
-/**
- * @class Cage
- * @brief uhhmm edit this later
- */
-template <class T>
-class Cage:public Animal{
+class Cage{
     public:
         Cage();
         Cage(char* hab, int size);
@@ -30,16 +14,18 @@ class Cage:public Animal{
         int getsize();
         Location* getArea();
         void MovementManager();
-        void AddAnimal(T& A);
-        T* getAnimals();
+        Location move(Animal* A,int i);
+        bool isthereanimal(Location L);
+        bool isInCage(Location L);
+        void AddAnimal(Animal* A);
+        Animal** getAnimals();
         int getNAnimal();
         const char* gethabitat();
     private:
-        T* Animals;
+        Animal** Animals;
         int NAnimal;
         const char* habitat;
         const int size;
         Location* area;
 };
-
 #endif

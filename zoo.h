@@ -1,13 +1,9 @@
 #ifndef ZOO_H
 #define ZOO_H
-
 #include "cage.h"
-#include "cell.h"
-#include "facility.h"
-
 #include <stdio.h>
+#include <string.h>
 #define DEFSIZE 10
-
 class Zoo {
     public:
         Zoo();
@@ -15,140 +11,235 @@ class Zoo {
         Zoo(const Zoo& z);
         ~Zoo();
         Zoo& operator= (const Zoo& Z);
-        Zoo ReadZoo(const char* filename);
+        ReadZoo(const char* filename);
+        int getwidth();
+        int getlength();
         Cell** getCells();
-       // Cage* getCages();
+        Cage** getCages();
+        int getNCages();
+        void MakeCage();
     private:
         Cell** Cells;
-       // Cage<LandHabitat>* Cages;
-        const int width;
-        const int length;
+        Cage** Cages;
+        int NCages;
+        int width;
+        int length;
 };
 
 Zoo::Zoo():width(DEFSIZE),length(DEFSIZE)
 {
-    *Cells=new Cell[width];
-    for(int i=0;i<width;i++)
-    {
-        Cells[i]=new Cell[length];
-    }
+    Cells=new Cell*[width*length];
+    Cages=new Cage*[DEFSIZE];
 }
 Zoo::Zoo(int w, int l):width(w),length(l)
 {
-    *Cells=new Cell[width];
-    for(int i=0;i<width;i++)
-    {
-        Cells[i]=new Cell[length];
-    }
+    Cells=new Cell*[width*length];
+    Cages=new Cage*[DEFSIZE];
 }
 Zoo::Zoo(const Zoo& z):width(z.width),length(z.length)
 {
-    for(int i=0;i<width;i++)
+    NCages=z.NCages;
+    for(int i=0;i<(width*length);i++)
     {
-        for(int j=0;j<length;j++)
-        {
-            Cells[i][j]=z.Cells[i][j];
-        }
+        Cells[i]=z.Cells[i];
+    }
+    for(int i=0;i<NCages;i++)
+    {
+        Cages[i]=z.Cages[i];
     }
 }
 Zoo::~Zoo()
-{
-    for(int i=0;i<width;i++)
-    {
-        delete[] Cells[i];
-    }
+{  
+    delete[] Cells;
+    delete[] Cages;
 }
 Zoo& Zoo::operator= (const Zoo& Z)
 {
-    for(int i=0;i<width;i++)
-    {
-        delete[] Cells[i];
-    }
-    *Cells=new Cell[width];
-    for(int i=0;i<width;i++)
-    {
-        Cells[i]=new Cell[length];
-    }
-    for(int i=0;i<width;i++)
-    {
-        for(int j=0;j<length;j++)
+    delete[] Cells;
+    delete[] Cages;
+    Cells=new Cell*[width*length];
+    Cages=new Cage*[Z.NCages];
+        for(int j=0;j<(width*length);j++)
         {
-            Cells[i][j]=Z.Cells[i][j];
+            Cells[j]=Z.Cells[j];
         }
-    }
+        for(int j=0;j<NCages;j++)
+        {
+            Cages[j]=Z.Cages[j];
+        }
 }
-Zoo Zoo::ReadZoo(const char* filename)
+Zoo::ReadZoo(const char* filename)
 {
     FILE *f;
     f=fopen(filename,"r");
-    char** map;
+    char* map;
+    fseek (f , 0 , SEEK_END);
+    int lSize = ftell (f);
+    rewind (f);
+
+  // allocate memory to contain the whole file:
+   map = (char*) malloc (sizeof(char)*lSize);
     int i=0;
+    int j=0;
     int w=0;
     int c;
-    while((c=fgetc(f)!=EOF))
+    char ch;
+    while((c=fscanf(f,"%c",&ch)!=EOF))
     {
-        char ch=(char)c;
-        cout<<c;
         if(ch=='\n')
         {
-            map[i][w]='\0';
             i++;
-            w=0;
+            if(i==1)
+            {
+                w=j;
+            }
         }else{
-            map[i][w]=ch;
-            w++;
+            map[j]=ch;
+            j++;
         }
     }
     fclose(f);
-    for(int j=0;j<i;j++)
+    length=w;
+    width=i;
+    for(i=0;i<width;i++)
     {
-        for(int k=0;k<w;k++)
+        for(int j=0;j<length;j++)
         {
-            cout<<map[j][k];
-        }
-        cout<<endl;
-    }
-    Zoo Z(w,i);
-    for(i=0;i<Z.width;i++)
-    {
-        for(int j=0;j<Z.length;j++)
-        {
-            if(map[i][j]=='O')
+            int indeks=i*(length)+j;
+            if(map[indeks]=='O')
             {
-                AirHabitat A;
-                Z.Cells[i][j]=A;
-            }else if(map[i][j]=='#')
+                Cells[indeks]=new AirHabitat;
+            }else if(map[indeks]=='#')
             {
-                WaterHabitat W;
-                Z.Cells[i][j]=W;
-            }else if(map[i][j]=='X')
+                Cells[indeks]=new WaterHabitat;
+            }else if(map[indeks]=='X')
             {
-                LandHabitat L;
-                Z.Cells[i][j]=L;
-            }else if(map[i][j]=='R')
+                Cells[indeks]=new LandHabitat;
+            }else if(map[indeks]=='R')
             {
-                Restaurant R;
-                Z.Cells[i][j]=R;
-            }else if(map[i][j]=='E')
+                Cells[indeks]=new Restaurant;
+            }else if(map[indeks]=='E')
             {
-                Entrance E;
-                Z.Cells[i][j]=E;
-            }else if(map[i][j]=='P')
+                Cells[indeks]=new Entrance;
+            }else if(map[indeks]=='P')
             {
-                Park P;
-                Z.Cells[i][j]=P;
+                Cells[indeks]=new Park;
             }else
             {
-                Road R;
-                Z.Cells[i][j]=R;
+                Cells[indeks]=new Road;
             }
+            Cells[indeks]->setX(j);
+            Cells[indeks]->setY(i);
         }
     }
-    return Z;
+    free(map);
+}
+int Zoo::getwidth()
+{
+    return width;
+}
+int Zoo::getlength()
+{
+    return length;
 }
 Cell** Zoo::getCells()
 {
     return Cells;
 }
-
+Cage** Zoo::getCages()
+{
+    return Cages;
+}
+int Zoo::getNCages()
+{
+    return NCages;
+}
+void Zoo::MakeCage()
+{
+    NCages=0;
+    bool check[width*length];
+    for(int i=0;i<(width*length);i++)
+    {
+        check[i]=false;
+    }
+    int count=0;
+    while(count<(width*length))
+    {
+        if((!check[count])&&(strcmp(Cells[count]->getname(),"habitat")==0))
+        {
+           
+            int* queue;
+            int i=0;
+            queue = (int*) malloc (sizeof(int)*(width*length));
+            int checked=0;
+            char* name;
+            name=Cells[count]->gettype();
+            cout<<name<<endl;
+            queue[i]=count;
+            check[queue[i]]=true;
+            while((checked<=i)&&(checked<(width*length)))
+            {
+                if((queue[checked]+1>=0)&&(queue[checked]+1<(width*length))&&(!check[queue[checked]+1]))
+                {
+                    //if(strcmp(Cells[queue[checked]+1]->getname(),"habitat")==0)
+                    //{
+                        if(strcmp(Cells[queue[checked]+1]->gettype(),name)==0)
+                        {
+                            i++;
+                            queue[i]=queue[checked]+1;
+                            check[queue[i]]=true;
+                        }
+                    //}
+                }
+                if((queue[checked]-1>=0)&&(queue[checked]-1<(width*length))&&(!check[queue[checked]-1]))
+                {
+                    //if(strcmp(Cells[queue[checked]-1]->getname(),"habitat")==0)
+                    //{
+                        cout<<queue[checked]-1;
+                        if(strcmp(Cells[queue[checked]-1]->gettype(),name)==0)
+                        {
+                            i++;
+                            queue[i]=queue[checked]-1;
+                            check[queue[i]]=true;
+                        }
+                    //}
+                }
+                if((queue[checked]+length>=0)&&(queue[checked]+length<(width*length))&&(!check[queue[checked]+length]))
+                {
+                    //if(strcmp(Cells[queue[checked]+length]->getname(),"habitat")==0)
+                    //{
+                        if(strcmp(Cells[queue[checked]+length]->gettype(),name)==0)
+                        {
+                            i++;
+                            queue[i]=queue[checked]+length;
+                            check[queue[i]]=true;
+                        }
+                    //}
+                }
+                if((queue[checked]-length>=0)&&(queue[checked]+length<(width*length))&&(!check[queue[checked]-length]))
+                {
+                
+                        if(strcmp(Cells[queue[checked]-length]->gettype(),name)==0)
+                        {
+                            i++;
+                            queue[i]=queue[checked]-length;
+                            check[queue[i]]=true;
+                        }
+                    //}
+                }
+                checked++;
+            }
+            NCages++;
+            Cages[NCages-1]=new Cage(name,i+1);
+            for(int ar=0;ar<(i+1);ar++)
+            {
+                Location L((queue[ar]%length),(queue[ar]/length));
+                Cages[NCages-1]->getArea()[ar]=L;
+            }
+            free(queue);
+        }
+        check[count]=true;
+        count++;
+    }
+}
 #endif
