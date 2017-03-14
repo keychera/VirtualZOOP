@@ -15,93 +15,93 @@
  * @brief	acstract class of Habitat as one of Cell
  */
 class Habitat: public Cell{
-    public:
+  public:
         /**
-		 * @brief default construstor
-		 * this will construct Cell
-		 */
-        Habitat();
+	 * @brief default construstor
+	 * this will construct Cell
+	 */
+    Habitat();
         /**
-		 * @brief name getter
-		 * this will return "habitat"
+	 * @brief name getter
+	 * this will return "habitat"
          * @return char*
 		 */
-        char* GetName();
+    char* GetName();
         /**
-		 * @brief pure virtual function for type getter
-		 */
-        virtual char* GetType()=0;
+	 * @brief pure virtual function for type getter
+	 */
+    virtual char* GetType()=0;
 };
 /**
  * @class	LandHabitat
  * @brief	class to define Habitat as LandHabitat
  */
 class LandHabitat: public Habitat{
-    public:
+  public:
         /**
-		 * @brief default construstor
-		 * this will construct Habitat
-		 */
-        LandHabitat();
-        /**
-		 * @brief fuction to print 
-		 * this will return "l"
+	 * @brief default construstor
+	 * this will construct Habitat
+	 */
+    LandHabitat();
+       /**
+	 * @brief fuction to print 
+	 * this will return "l"
          * @return void
 		 */
-        void Render();
+    void Render();
         /**
-		 * @brief type getter 
-		 * this will return "LandHabitat"
+	 * @brief type getter 
+	 * this will return "LandHabitat"
          * @return char*
-		 */
-        char* GetType();
+	 */
+    char* GetType();
 };
 /**
  * @class	WaterHabitat
  * @brief	class to define Habitat as WaterHabitat
  */
 class WaterHabitat: public Habitat{
-    public:
+  public:
         /**
-		 * @brief default construstor
-		 * this will construct Habitat
-		 */
-        WaterHabitat();
+	 * @brief default construstor
+	 * this will construct Habitat
+	 */
+    WaterHabitat();
         /**
-		 * @brief fuction to print 
-		 * this will return "w"
+	 * @brief fuction to print 
+	 * this will return "w"
          * @return void
-		 */
-        void Render();
+	 */
+    void Render();
         /**
-		 * @brief type getter 
-		 * this will return "WaterHabitat"
+	 * @brief type getter 
+	 * this will return "WaterHabitat"
          * @return char*
-		 */
-        char* GetType();
+	 */
+    char* GetType();
 };
 /**
  * @class	AirHabitat
  * @brief	class to define Habitat as AirHabitat
  */
 class AirHabitat: public Habitat{
-    public:
+  public:
         /**
-		 * @brief default construstor
-		 * this will construct Habitat
-		 */
-        AirHabitat();
+	 * @brief default construstor
+	 * this will construct Habitat
+	 */
+    AirHabitat();
         /**
-		 * @brief fuction to print 
-		 * this will return "a"
+	 * @brief fuction to print 
+	 * this will return "a"
          * @return void
-		 */
-        void Render();
+	 */
+    void Render();
         /**
-		 * @brief type getter 
-		 * this will return "AirHabitat"
+	 * @brief type getter 
+	 * this will return "AirHabitat"
          * @return char*
-		 */
-        char* GetType();
+	 */
+    char* GetType();
 };
 #endif

@@ -5,61 +5,61 @@ using namespace std;
 Facility::Facility():Cell(){};
 char* Facility::GetName()
 {
-    char* c=(char*)"facility";
-    return c;
+  char* c=(char*)"facility";
+  return c;
 }
 
 Road::Road():Facility(){};
 char* Road::GetType()
 {
-    char* c=(char*)"Road";
-    return c;
+  char* c=(char*)"Road";
+  return c;
 }
 void Road::Render()
 {
-    cout<<" ";
+  cout<<" ";
 }
 
 Entrance::Entrance():Road(){};
 char* Entrance::GetType()
 {
-    char* c=(char*)"Entrance";
-    return c;
+  char* c=(char*)"Entrance";
+  return c;
 }
 void Entrance::Render()
 {
-    cout<<'E';
+  cout<<'E';
 }
 
 Exit::Exit():Road(){};
 void Exit::Render()
 {
-    cout<<'@';
+  cout<<'@';
 }
 char* Exit::GetType()
 {
-    return (char*)"Exit";
+  return (char*)"Exit";
 }
 
 Restaurant::Restaurant():Facility(){};
 char* Restaurant::GetType()
 {
-    char* c=(char*)"Restaurant";
-    return c;
+  char* c=(char*)"Restaurant";
+  return c;
 }
 void Restaurant::Render()
 {
-    cout<<'R';
+  cout<<'R';
 }
 
 
 Park::Park():Facility(){};
 char* Park::GetType()
 {
-    char* c=(char*)"Park";
-    return c;
+  char* c=(char*)"Park";
+  return c;
 }
 void Park::Render()
 {
-    cout<<"P";
+  cout<<"P";
 }

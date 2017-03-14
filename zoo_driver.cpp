@@ -14,14 +14,15 @@ int main() {
     {
         for(int j=0;j<Z.GetLength();j++)
         {
-            cout<<Z.GetCells()[i*Z.GetLength()+j]->GetX();
-            cout<<Z.GetCells()[i*Z.GetLength()+j]->GetY();
+            //cout<<Z.GetCells()[i*Z.GetLength()+j]->GetX();
+            //cout<<Z.GetCells()[i*Z.GetLength()+j]->GetY();
             Z.GetCells()[i*Z.GetLength()+j]->Render();
         }
         cout<<endl;
     }
     Z.MakeCage();
-    cout<<Z.GetNCages()<<endl;/*
+    //cout<<Z.GetNCages()<<endl;
+    /*
     for(int i=0;i<Z.GetNCages();i++)
     {
         cout<<"Cage "<<i+1<<endl;
