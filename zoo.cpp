@@ -43,7 +43,7 @@ Zoo& Zoo::operator= (const Zoo& Z)
             Cages[j]=Z.Cages[j];
         }
 }
-Zoo::ReadZoo(const char* filename)
+void Zoo::ReadZoo(const char* filename)
 {
     FILE *f;
     f=fopen(filename,"r");

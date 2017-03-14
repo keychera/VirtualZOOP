@@ -11,7 +11,7 @@ class Zoo {
         Zoo(const Zoo& z);
         ~Zoo();
         Zoo& operator= (const Zoo& Z);
-        ReadZoo(const char* filename);
+        void ReadZoo(const char* filename);
         int getwidth();
         int getlength();
         Cell** getCells();
