@@ -4,21 +4,21 @@
 class Facility:public Cell{
     public:
         Facility();
-        virtual char* getType()=0;
-        char* getName();
+        virtual char* GetType()=0;
+        char* GetName();
 };
 
 class Road: public Facility{
     public:
         Road();
-        virtual char* getType();  
+        virtual char* GetType();  
         virtual void Render();
 };
 
 class Entrance: public Road{
     public:
         Entrance();
-        char* getType();
+        char* GetType();
         void Render();
 };
 
@@ -26,21 +26,21 @@ class Exit: public Road{
     public:
         Exit();
         void Render();
-        char* getType();
+        char* GetType();
 };
 
 class Restaurant: public Facility{
     public:
         Restaurant();
         void Render();
-        char* getType();
+        char* GetType();
 };
 
 class Park: public Facility{
     public:
         Park();
         void Render();
-        char* getType();
+        char* GetType();
 };
 
 #endif

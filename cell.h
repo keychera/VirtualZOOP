@@ -8,7 +8,7 @@ class Cell: public Renderable, public Location{
         Cell();
         Cell(int x, int y);
         //Cell& operator=(const Cell& C);
-        virtual char* getName()=0;
-        virtual char* getType()=0;
+        virtual char* GetName()=0;
+        virtual char* GetType()=0;
 };
 #endif

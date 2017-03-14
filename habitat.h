@@ -4,28 +4,28 @@
 class Habitat: public Cell{
     public:
         Habitat();
-        char* getName();
-        virtual char* getType()=0;
+        char* GetName();
+        virtual char* GetType()=0;
 };
 
 class LandHabitat: public Habitat{
     public:
         LandHabitat();
         void Render();
-        char* getType();
+        char* GetType();
 };
 
 class WaterHabitat: public Habitat{
     public:
         WaterHabitat();
         void Render();
-        char* getType();
+        char* GetType();
 };
 
 class AirHabitat: public Habitat{
     public:
         AirHabitat();
         void Render();
-        char* getType();
+        char* GetType();
 };
 #endif

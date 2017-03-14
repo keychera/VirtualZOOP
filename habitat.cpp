@@ -2,13 +2,13 @@
 #include <iostream>
 using namespace std;
 Habitat::Habitat():Cell(){};
-char* Habitat::getName()
+char* Habitat::GetName()
 {
     char* c=(char*)"habitat";
     return c;
 }
 LandHabitat::LandHabitat():Habitat(){};
-char* LandHabitat::getType()
+char* LandHabitat::GetType()
 {
     char* c=(char*)"LandHabitat";
     return c;
@@ -20,7 +20,7 @@ void LandHabitat::Render()
 
 
 WaterHabitat::WaterHabitat():Habitat(){};
-char* WaterHabitat::getType()
+char* WaterHabitat::GetType()
 {
     char* c=(char*)"WaterHabitat";
     return c;
@@ -31,7 +31,7 @@ void WaterHabitat::Render()
 }
 
 AirHabitat::AirHabitat():Habitat(){};
-char* AirHabitat::getType()
+char* AirHabitat::GetType()
 {
     char* c=(char*)"AirHabitat";
     return c;

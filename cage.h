@@ -52,47 +52,47 @@ class Cage{
 		 * @brief getter for size
          * @return int
 		 */
-        int getSize();
+        int GetSize();
         /**
 		 * @brief getter area
          * @return Location*
 		 */
-        Location* getArea();
+        Location* GetArea();
         /**
-		 * @brief cage's animals movement manager
+		 * @brief cage's animals Movement manager
 		 * this will change animal in cage position
          * @return void
 		 */
         void MovementManager();
         /**
-		 * @brief function to get location after animal A move 
-		 * this will return location for 1:move up, 2:move right, 3:move down, 4:move left
+		 * @brief function to get location after animal A Move 
+		 * this will return location for 1:Move up, 2:Move right, 3:Move down, 4:Move left
          * @return Location
 		 */
-        Location move(Animal* A,int i);
+        Location Move(Animal* A,int i);
         /**
 		 * @brief check location from animal
 		 * this will check if there's animal in location L
          * @param Location
          * @return bool
 		 */
-        bool isThereAnimal(Location& L);
+        bool IsThereAnimal(Location& L);
         /**
 		 * @brief check location in cage
 		 * this will check if location L is inside cage
          * @param Location
          * @return bool
 		 */
-        bool isInCage(Location& L);
+        bool IsInCage(Location& L);
         /**
 		 * @brief void to add animal to cage
          * @param Animal*
          * @return void 
 		 */
         void AddAnimal(Animal* A);
-        Animal** getAnimals();
-        int getNAnimal();
-        const char* getHabitat();
+        Animal** GetAnimals();
+        int GetNAnimal();
+        const char* GetHabitat();
     private:
         Animal** Animals;
         int NAnimal;

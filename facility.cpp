@@ -3,14 +3,14 @@
 using namespace std;
 
 Facility::Facility():Cell(){};
-char* Facility::getName()
+char* Facility::GetName()
 {
     char* c=(char*)"facility";
     return c;
 }
 
 Road::Road():Facility(){};
-char* Road::getType()
+char* Road::GetType()
 {
     char* c=(char*)"Road";
     return c;
@@ -21,7 +21,7 @@ void Road::Render()
 }
 
 Entrance::Entrance():Road(){};
-char* Entrance::getType()
+char* Entrance::GetType()
 {
     char* c=(char*)"Entrance";
     return c;
@@ -36,13 +36,13 @@ void Exit::Render()
 {
     cout<<'@';
 }
-char* Exit::getType()
+char* Exit::GetType()
 {
     return (char*)"Exit";
 }
 
 Restaurant::Restaurant():Facility(){};
-char* Restaurant::getType()
+char* Restaurant::GetType()
 {
     char* c=(char*)"Restaurant";
     return c;
@@ -54,7 +54,7 @@ void Restaurant::Render()
 
 
 Park::Park():Facility(){};
-char* Park::getType()
+char* Park::GetType()
 {
     char* c=(char*)"Park";
     return c;

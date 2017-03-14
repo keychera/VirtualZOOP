@@ -51,12 +51,12 @@ Cage& Cage::operator=(const Cage& C)
     }
 }
 
-int Cage::getSize()
+int Cage::GetSize()
 {
     return size;
 }
 
-Location* Cage::getArea()
+Location* Cage::GetArea()
 {
     return area;
 }
@@ -66,23 +66,23 @@ void Cage::MovementManager()
     for(int i=0;i<NAnimal;i++)
     {
         int random=rand()%4;
-        bool moved=false;
+        bool Moved=false;
         int count=0;
-        while((!moved)&&(count<=4))
+        while((!Moved)&&(count<=4))
         {
-            Location m=move(Animals[i],random);
-            if ((isInCage(m)&&(!isThereAnimal(m))))
+            Location m=Move(Animals[i],random);
+            if ((IsInCage(m)&&(!IsThereAnimal(m))))
             {
                 Animals[i]->SetX(m.GetX());
                 Animals[i]->SetY(m.GetY());
-                moved=true;
+                Moved=true;
             }
             count++;
             random=(random+1)%4;
         }
     }
 }
-Location Cage::move(Animal* A,int i)
+Location Cage::Move(Animal* A,int i)
 {
     Location L1(A->GetX(),A->GetY());
     if(i==0)
@@ -100,7 +100,7 @@ Location Cage::move(Animal* A,int i)
     }
     return L1;
 }
-bool Cage::isThereAnimal(Location& L)
+bool Cage::IsThereAnimal(Location& L)
 {
     bool found=false;
     int i=0;
@@ -114,7 +114,7 @@ bool Cage::isThereAnimal(Location& L)
     }   
     return found; 
 }
-bool Cage::isInCage(Location& L)
+bool Cage::IsInCage(Location& L)
 {
     bool found=false;
     int i=0;
@@ -137,7 +137,7 @@ void Cage::AddAnimal(Animal* A)
         bool found=false;
         while((i<size)&&(!found))
         {
-            if(!isThereAnimal(area[i]))
+            if(!IsThereAnimal(area[i]))
             {
                 Animals[NAnimal]->SetX(area[i].GetX());
                 Animals[NAnimal]->SetY(area[i].GetY());
@@ -152,17 +152,17 @@ void Cage::AddAnimal(Animal* A)
     }
 }
 
-Animal** Cage::getAnimals()
+Animal** Cage::GetAnimals()
 {
     return Animals;
 }
 
-int Cage::getNAnimal()
+int Cage::GetNAnimal()
 {
     return NAnimal;
 }
 
-const char* Cage::getHabitat()
+const char* Cage::GetHabitat()
 {
     return habitat;
 }
