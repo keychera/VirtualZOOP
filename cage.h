@@ -1,6 +1,7 @@
 #ifndef CAGE_H
 #define CAGE_H
 #include "facility.h"
+#include "habitat.h"
 #include <iostream>
 using namespace  std;
 class Cage{

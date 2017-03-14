@@ -2,34 +2,41 @@
 #include <iostream>
 using namespace std;
 Habitat::Habitat():Cell(){};
-
-LandHabitat::LandHabitat():Habitat(){};
-void LandHabitat::render()
+char* Habitat::getname()
 {
-    cout<<"LH";
+    char* c=(char*)"habitat";
+    return c;
 }
-const char* LandHabitat::gethabitat()
+LandHabitat::LandHabitat():Habitat(){};
+char* LandHabitat::gettype()
 {
-    return habitat;
+    char* c=(char*)"LandHabitat";
+    return c;
+}
+void LandHabitat::Render()
+{
+    cout<<"l";
 }
 
 
 WaterHabitat::WaterHabitat():Habitat(){};
-void WaterHabitat::render()
+char* WaterHabitat::gettype()
 {
-    cout<<"WH";
+    char* c=(char*)"WaterHabitat";
+    return c;
 }
-const char* WaterHabitat::gethabitat()
+void WaterHabitat::Render()
 {
-    return habitat;
+    cout<<"w";
 }
 
 AirHabitat::AirHabitat():Habitat(){};
-void AirHabitat::render()
+char* AirHabitat::gettype()
 {
-    cout<<"AH";
+    char* c=(char*)"AirHabitat";
+    return c;
 }
-const char* AirHabitat::gethabitat()
+void AirHabitat::Render()
 {
-    return habitat;
+    cout<<"a";
 }

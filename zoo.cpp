@@ -27,7 +27,7 @@ Zoo::~Zoo()
 {  
     delete[] Cells;
     //cout<<"dtor";
-    for(int i=1;i<NCages;i++)
+    for(int i=0;i<NCages;i++)
     {
         delete Cages[i];
     }
@@ -52,7 +52,6 @@ void Zoo::ReadZoo(const char* filename)
 {
     FILE *f;
     f=fopen(filename,"r");
-    char* map;
     fseek (f , 0 , SEEK_END);
     int lSize = ftell (f);
     rewind (f);
@@ -60,7 +59,6 @@ void Zoo::ReadZoo(const char* filename)
   // allocate memory to contain the whole file:
     delete[] Cells;
     Cells=new Cell*[lSize];
-   map = new char[lSize];
     int i=0;
     int j=0;
     int w=0;
@@ -212,12 +210,29 @@ void Zoo::MakeCage()
                 checked++;
             }
             NCages++;
-            Cages[NCages-1]=new Cage(name,i+1);
+            //menyimpan cage baru di C
+            Cage* C=new Cage(name,i+1);
             for(int ar=0;ar<(i+1);ar++)
             {
                 Location L((queue[ar]%length),(queue[ar]/length));
-                Cages[NCages-1]->getArea()[ar]=L;
+                C->getArea()[ar]=L;
             }
+            //membuat array temp untuk menyimpan array cage lama
+            Cage** temp=new Cage*[NCages];
+            int p;
+            for(p=0;p<(NCages-1);p++)
+            {
+                temp[p]=Cages[p];
+            }
+            temp[p]=C;
+            //menginisialisasi ukuran baru dan memasukkan temp ke cages
+            delete[] Cages;
+            Cages= new Cage*[NCages];
+            for(int i=0;i<(NCages);i++)
+            {
+                Cages[i]=temp[i];
+            }
+            delete[] temp; 
             free(queue);
         }
         check[count]=true;
