@@ -68,7 +68,7 @@ class Entrance: public Road{
     * @brief default constructor
     * construct Road
     */
-    Entrance()
+    Entrance();
    /**
     * @brief function of type getter
     * this will return "Entrance"

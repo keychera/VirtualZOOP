@@ -15,7 +15,7 @@ char* LandHabitat::GetType()
 }
 void LandHabitat::Render()
 {
-  cout<<"l";
+  cout<<"^";
 }
 
 
@@ -27,7 +27,7 @@ char* WaterHabitat::GetType()
 }
 void WaterHabitat::Render()
 {
-  cout<<"w";
+  cout<<"~";
 }
 
 AirHabitat::AirHabitat():Habitat(){};
@@ -38,5 +38,5 @@ char* AirHabitat::GetType()
 }
 void AirHabitat::Render()
 {
-  cout<<"a";
+  cout<<"*";
 }

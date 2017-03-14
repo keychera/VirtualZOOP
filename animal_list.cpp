@@ -1,5 +1,7 @@
 //animal_list.cpp
 #include "animal_list.h"
+#include <iostream>
+using namespace std;
 
 //Cat
 	Cat::Cat():AnimalDiet(10,true,false),AnimalTameStatus(true),AnimalClassification("Felidae","Felis","catus"),AnimalHabitat(1,0,0){}
@@ -10,7 +12,7 @@
 	}
 		
 	void Cat::Render (){
-			
+		cout<<'c';
 	}
 
 //Cheetah
@@ -22,7 +24,7 @@
 	}
 		
 	void Cheetah::Render (){
-			
+		cout<<'C';
 	}
 	
 //Lion
@@ -34,7 +36,7 @@
 	}
 		
 	void Lion::Render (){
-			
+		cout<<'L';
 	}
 
 //Leopard
@@ -46,7 +48,7 @@
 	}
 		
 	void Leopard::Render (){
-			
+		cout<<'l';
 	}
 	
 //Tiger
@@ -58,7 +60,7 @@
 	}
 		
 	void Tiger::Render (){
-		
+		cout<<'T';
 	}
 
 //Beluga
@@ -70,7 +72,7 @@
 	}
 		
 	void Beluga::Render (){
-		
+		cout<<'B';
 	}
 
 //Narwhal
@@ -82,7 +84,7 @@
 	}
 		
 	void Narwhal::Render (){
-		
+		cout<<'N';
 	}
 
 //Dolphin
@@ -94,7 +96,7 @@
 	}
 		
 	void Dolphin::Render (){
-		
+		cout<<'D';
 	}
 
 //Orca
@@ -106,7 +108,7 @@
 	}
 		
 	void Orca::Render (){
-		
+		cout<<'O';
 	}
 
 //Clownfish
@@ -118,7 +120,7 @@
 	}
 		
 	void Clownfish::Render (){
-		
+		cout<<'C';
 	}
 	
 //Damselfish
@@ -130,7 +132,7 @@
 	}
 		
 	void Damselfish::Render (){
-		
+		cout<<'d';
 	}
 	
 //Coyote
@@ -142,7 +144,7 @@
 	}
 		
 	void Coyote::Render (){
-		
+		cout<<'c';
 	}
 	
 //Wolf
@@ -154,7 +156,7 @@
 	}
 		
 	void Wolf::Render (){
-		
+		cout<<'W';
 	}
 	
 //RedFox
@@ -166,7 +168,7 @@
 	}
 		
 	void RedFox::Render (){
-		
+		cout<<'F';
 	}
 	
 //ArcticFox
@@ -178,7 +180,7 @@
 	}
 		
 	void ArcticFox::Render (){
-		
+		cout<<'f';
 	}
 	
 //Komodo
@@ -190,7 +192,7 @@
 	}
 		
 	void Komodo::Render (){
-		
+		cout<<'K';
 	}
 	
 //Biawak
@@ -202,7 +204,7 @@
 	}
 		
 	void Biawak::Render (){
-		
+		cout<<'b';
 	}
 	
 //BadakJawa
@@ -214,7 +216,7 @@
 	}
 		
 	void BadakJawa::Render (){
-		
+		cout<<'J';
 	}
 	
 //BadakSumatra
@@ -226,7 +228,7 @@
 	}
 		
 	void BadakSumatra::Render (){
-		
+		cout<<'S';
 	}
 	
 //BaldEagle
@@ -238,7 +240,7 @@
 	}
 		
 	void BaldEagle::Render (){
-		
+		cout<<'E';
 	}
 	
 //GoldenEagle
@@ -250,7 +252,7 @@
 	}
 		
 	void GoldenEagle::Render (){
-		
+		cout<<'e';
 	}
 	
 //RedKite
@@ -262,7 +264,7 @@
 	}
 		
 	void RedKite::Render (){
-		
+		cout<<'R';
 	}
 	
 //BlackKite
@@ -274,7 +276,7 @@
 	}
 		
 	void BlackKite::Render (){
-		
+		cout<<'k';
 	}
 	
 //Axolotl
@@ -286,5 +288,5 @@
 	}
 		
 	void Axolotl::Render (){
-		
+		cout<<'A';
 	}

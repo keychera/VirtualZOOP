@@ -28,13 +28,13 @@ char* Entrance::GetType()
 }
 void Entrance::Render()
 {
-  cout<<'E';
+  cout<<'@';
 }
 
 Exit::Exit():Road(){};
 void Exit::Render()
 {
-  cout<<'@';
+  cout<<'x';
 }
 char* Exit::GetType()
 {
@@ -49,7 +49,7 @@ char* Restaurant::GetType()
 }
 void Restaurant::Render()
 {
-  cout<<'R';
+  cout<<'$';
 }
 
 
@@ -61,5 +61,5 @@ char* Park::GetType()
 }
 void Park::Render()
 {
-  cout<<"P";
+  cout<<"#";
 }

@@ -1,6 +1,7 @@
 #include "cage.h"
 #include <iostream>
 #include <iomanip>
+#include <string.h>
 #include <cstdlib>
 #include <time.h>
 using namespace std;
@@ -135,10 +136,10 @@ void Cage::AddAnimal(Animal* A)
     bool ok=true;
     if(!(A->IsTame()))
     {
-      j=0;
+      int j=0;
       while((ok)&&(j<NAnimal))
       {
-        if(strcmp(Animals[j]->GetSPecies(),A->GetSpecies())!=0)
+        if(strcmp(Animals[j]->GetSpecies(),A->GetSpecies())!=0)
 	{
           ok=false;
 	}

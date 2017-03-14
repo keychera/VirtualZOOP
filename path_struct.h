@@ -1,6 +1,6 @@
-//path_struct.h
+#ifndef PATH_STRUCT_H
+#define PATH_STRUCT_H
 #include <iostream>
-
 //struct for Pathfinding
 typedef struct path_s {
   int x;
@@ -25,3 +25,4 @@ bool operator> (const Path& lhs, const Path& rhs){
 bool operator< (const Path& lhs, const Path& rhs){
   return lhs.counter < rhs.counter;
 }
+#endif

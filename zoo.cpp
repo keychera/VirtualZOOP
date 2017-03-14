@@ -261,7 +261,7 @@ Cell* Zoo::AccessCell(int x,int y){
 int Zoo::GetIndexCage(int x,int y)
 {
   Location L(x,y);
-  bool found=false
+  bool found=false;
   int i=0;
   while((!found)&&(i<NCages))
   {
