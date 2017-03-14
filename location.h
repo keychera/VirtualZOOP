@@ -52,6 +52,14 @@ class Location {
 		 * @return void
 		 */
 		void SetY(int);
+    
+    	/**
+		 * @brief setter for X and Y value simultaneously
+     * @param X
+		 * @param y
+		 * @return void
+		 */
+		void SetXY(int,int);
 	private :
 		int x;	///< the x integer value of the location
 		int y;	///< the y integer value of the location

@@ -9,4 +9,5 @@ int Location::GetX()	{return x;}
 int Location::GetY()	{return y;}
 void Location::SetX(int _x)	{ x = _x;}
 void Location::SetY(int _y)	{ y = _y;}
+void Location::SetXY(int _x,int _y) {x = _x; y = _y;}
 
