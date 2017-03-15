@@ -140,26 +140,27 @@ void Cage::AddAnimal(Animal* A)
       while((ok)&&(j<NAnimal))
       {
         if(strcmp(Animals[j]->GetSpecies(),A->GetSpecies())!=0)
-	{
+	      {
           ok=false;
-	}
+	      }
         j++;
       }
     }
       if(ok)
       {
         Animals[NAnimal]=A;
-        int i=0;
+        int count=0;
+        int random=rand()%size;
         bool found=false;
-        while((i<size)&&(!found))
+        while((count<size)&&(!found))
         {
-          if(!IsThereAnimal(area[i]))
+          if(!IsThereAnimal(area[random]))
           {
-            Animals[NAnimal]->SetX(area[i].GetX());
-            Animals[NAnimal]->SetY(area[i].GetY());
+            Animals[NAnimal]->SetX(area[random].GetX());
+            Animals[NAnimal]->SetY(area[random].GetY());
             found=true;
           }
-          i++;
+          random=(random+1)%size;
         }
         NAnimal++;
       }else

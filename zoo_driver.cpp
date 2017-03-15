@@ -8,8 +8,11 @@ int main() {
     Z.ReadZoo(filename.c_str());
     cout<<"width:"<<Z.GetWidth()<<endl;
     cout<<"length:"<<Z.GetLength()<<endl;
-    
+    filename="map_animal.txt";
     Z.MakeCage();
+    Z.ReadAnimal(filename.c_str());
+    cout<<"done";
+    Z.Print();
     //cout<<Z.GetNCages()<<endl;
     /*
     for(int i=0;i<Z.GetNCages();i++)
