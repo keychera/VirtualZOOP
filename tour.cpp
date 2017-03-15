@@ -250,7 +250,7 @@ void Tour::RestartRoute(){
 
 void Tour::TraceRoute(){
   route_pointer++;
-  cout << "The tour continues ..." << endl << endl;
+  cout << "The tour continues ..." << "current position : (" << route[route_distance].GetX() << "," << route[route_distance].GetY() << ")"<< endl << endl;
   if (route_pointer == route_distance-1) {
     cout << "\t Now here is the Exit! Thank you for your visit Lady and Madam" << endl;
   } else {
