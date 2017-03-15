@@ -236,11 +236,14 @@ int Tour::InteractAroundRoute(Location r,int dir){
 
 void Tour::InteractHabitat(Cell* c){
   Cage** cageArray = zoo_ref.GetCages();
-  Cage* cage = cageArray[zoo_ref.GetIndexCage(c->GetX(),c->GetY())];
-  Animal** a = cage->GetAnimals();
-  int animalNum = cage->GetNAnimal();
-  for(int i = 0;i < animalNum;i++){
-    cout << a[i]->GetGenus() << " " << a[i]->GetSpecies() << " : "<< a[i]->Interact() << endl;
+  int indeks=zoo_ref.GetIndexCage(c->GetX(),c->GetY());
+  if(indeks<zoo_ref.GetNCages()){
+    Cage* cage = cageArray[zoo_ref.GetIndexCage(c->GetX(),c->GetY())];
+    Animal** a = cage->GetAnimals();
+    int animalNum = cage->GetNAnimal();
+    for(int i = 0;i < animalNum;i++){
+      cout << a[i]->GetGenus() << " " << a[i]->GetSpecies() << " : "<< a[i]->Interact() << endl;
+    }
   }
 }
 
@@ -250,7 +253,7 @@ void Tour::RestartRoute(){
 
 void Tour::TraceRoute(){
   route_pointer++;
-  cout << "The tour continues ..." << "current position : (" << route[route_distance].GetX() << "," << route[route_distance].GetY() << ")"<< endl << endl;
+  cout << "The tour continues ..." << "current position : (" << route[route_pointer].GetX() << "," << route[route_pointer].GetY() << ")"<< endl << endl;
   if (route_pointer == route_distance-1) {
     cout << "\t Now here is the Exit! Thank you for your visit Lady and Madam" << endl;
   } else {
@@ -261,7 +264,14 @@ void Tour::TraceRoute(){
   }
   cout << endl;
 }
-
+int Tour::GetRouteDistance()
+{
+  return route_distance;
+}
+int Tour::GetRoutePointer()
+{
+  return route_pointer;
+}
 void Tour::TraceWholeRoute(){
   while(route_pointer < route_distance-1)
     TraceRoute();
