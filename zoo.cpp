@@ -63,7 +63,6 @@ void Zoo::ReadZoo(const char* filename)
   fseek (f , 0 , SEEK_END);
   int lSize = ftell (f);
   rewind (f);
-  cout<<lSize<<endl;
   // allocate memory to contain the whole file:
   delete[] Cells;
   Cells=new Cell*[lSize];
@@ -274,4 +273,40 @@ int Zoo::GetIndexCage(int x,int y)
     }
   }
   return i;
+}
+
+void Zoo::Print()
+{
+  for(int i=0;i<width;i++)
+    {
+      for(int j=0;j<length;j++)
+      {
+        if(strcmp(Cells[i*length+j]->GetName(),"habitat")==0)
+        {
+          int indeks=GetIndexCage(i,j);
+          int iAn=-1;
+          if(Cages[indeks]->GetNAnimal()>0)
+          {
+            for(int k=0;k<Cages[indeks]->GetNAnimal();k++)
+            {
+              if((Cages[indeks]->GetAnimals()[k]->GetX()==i)&&(Cages[indeks]->GetAnimals()[k]->GetY()==j))
+              {
+                iAn=k;
+              }
+            }
+          }
+          if(iAn!=(-1))//ada animal
+          {
+            Cages[indeks]->GetAnimals()[iAn]->Render();
+          }else
+          {
+            Cells[i*length+j]->Render();
+          }
+        }else
+        {
+            Cells[i*length+j]->Render();
+        }
+      }
+      cout<<endl;
+    }
 }

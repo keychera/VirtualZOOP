@@ -105,6 +105,7 @@ class Zoo {
          * @return int
          */
         int GetIndexCage(int x,int y);
+        void Print();
     
     private:
         Cell** Cells;   ///< array of Cell*
