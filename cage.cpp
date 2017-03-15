@@ -63,7 +63,6 @@ Location* Cage::GetArea()
 }
 void Cage::MovementManager()
 {
-  srand(time(NULL));
   for(int i=0;i<NAnimal;i++)
   {
     int random=rand()%4;

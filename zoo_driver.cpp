@@ -11,7 +11,6 @@ int main() {
     filename="map_animal.txt";
     Z.MakeCage();
     Z.ReadAnimal(filename.c_str());
-    cout<<"done";
     Z.Print();
     //cout<<Z.GetNCages()<<endl;
     /*

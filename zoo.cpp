@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <iomanip>
 #include <cstdlib>
 #include <bits/stdc++.h>
 using namespace std;
@@ -112,12 +113,9 @@ void Zoo::ReadZoo(const char* filename)
       j++;
     }
   }
-  cout<<"done";
   fclose(f);
   length=w;
   width=i;
-  cout<<width;
-  cout<<length;
   for(int i=0;i<(j);i++)
   {
     Cells[i]->SetX(i%length);
@@ -218,7 +216,7 @@ void Zoo::MakeCage()
         Cage* C=new Cage(name,i+1);
         for(int ar=0;ar<(i+1);ar++)
         {
-          Location L((queue[ar]%length),(queue[ar]/length));
+          Location L((queue[ar]/length),(queue[ar]%length));
           C->GetArea()[ar]=L;
         }
         //membuat array temp untuk menyimpan array cage lama
@@ -253,7 +251,7 @@ void Zoo::ReadAnimal(const char *filename) {
 	char hewan;
 	int n_hewan;
 	if (f.is_open()) {
-		while (!f.eof()) {
+		do {
 			f >> output;
 			hewan = output[0];
 			n_hewan = ((int) output[1] - 48);
@@ -332,7 +330,7 @@ void Zoo::ReadAnimal(const char *filename) {
         }
         AddAnimaltoZoo(A);
       }
-		}
+		}while (!f.eof());
 	}
 	f.close();
 }
@@ -341,14 +339,14 @@ void Zoo::AddAnimaltoZoo(Animal* A)
   if(A->IsLand())
   {
     bool found=false;
-    int i=0;
+    int i=rand()%NCages;
     while((i<NCages)&&(!found))
     {
-      if((strcmp(Cages[i]->GetHabitat(),"LandHabitat")))
+      if((strcmp(Cages[i]->GetHabitat(),"LandHabitat"))&&(Cages[i]->GetNAnimal()<(Cages[i]->GetSize()*2/3)))
       {
         found=true;
       }else{
-        i++;
+        i=(i+1)%NCages;
       }
     }
     if(i==NCages)
@@ -443,20 +441,19 @@ void Zoo::Print()
         if(strcmp(Cells[i*length+j]->GetName(),"habitat")==0)
         {
           int indeks=GetIndexCage(i,j);
-          cout<<indeks<<endl;
           int iAn=-1;
           if(Cages[indeks]->GetNAnimal()>0)
           {
             for(int k=0;k<Cages[indeks]->GetNAnimal();k++)
             {
-              if((Cages[indeks]->GetAnimals()[k]->GetX()==i)&&(Cages[indeks]->GetAnimals()[k]->GetY()==j))
+              if(((Cages[indeks]->GetAnimals()[k])->GetX()==i)&&((Cages[indeks]->GetAnimals()[k])->GetY()==j))
               {
                 iAn=k;
               }
             }
+            //cout<<"ada animal"<<endl;
           }
-          
-          cout<<"done";
+          //cout<<"done";
           if(iAn!=(-1))//ada animal
           {
             Cages[indeks]->GetAnimals()[iAn]->Render();
@@ -466,7 +463,7 @@ void Zoo::Print()
           }
         }else
         {
-          cout<<"non";
+          //cout<<"non";
           Cells[i*length+j]->Render();
         }
       }
