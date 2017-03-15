@@ -275,7 +275,6 @@ int Tour::GetRoutePointer()
 void Tour::TraceWholeRoute(){
   while(route_pointer < route_distance-1)
     TraceRoute();
-  
 }
 
 void Tour::PrintRoute(){

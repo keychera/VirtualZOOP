@@ -470,3 +470,21 @@ void Zoo::Print()
       cout<<endl;
     }
 }
+
+int Zoo::CalculateFoodForCage(Cage* c){
+  Animal** animal = c->GetAnimals();
+  int animalNum = c->GetNAnimal();
+  int out = 0;
+  for(int i = 0; i < animalNum;i++)
+    out += (animal[i]->GetWeight() / 10 );
+  return 0;
+}
+
+int Zoo::CalculateFoodForAll(){
+  int out = 0;
+  for(int i = 0; i < NCages;i++)
+    out += CalculateFoodForCage(Cages[i]);
+  return out;
+}
+
+
